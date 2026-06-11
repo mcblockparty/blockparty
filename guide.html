@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How it works — Block Party</title>
+  <meta name="description" content="Learn how to download and install your Block Party resource pack in Minecraft." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-mark"><span></span><span></span><span></span><span></span></div>
+    Block Party
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="catalog.html">Catalog</a>
+    <a class="nav-link" href="guide.html">How it works</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+  </div>
+  <div class="nav-spacer"></div>
+  <a class="cart-btn" href="cart.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    Your pack <span class="cart-badge">0</span>
+  </a>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="padding:56px 28px 48px">
+  <div class="hero-eyebrow">Installation guide</div>
+  <h1 style="font-size:clamp(28px,4vw,48px)">Getting your pack into Minecraft</h1>
+  <p>Five simple steps. No mods to install — just OptiFine or CIT Resewn.</p>
+</section>
+
+<!-- Install steps -->
+<div class="section">
+  <h2 class="section-title" style="margin-bottom:24px">Installation steps</h2>
+  <div class="steps-grid" style="margin-top:0">
+
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-title">Install OptiFine or CIT Resewn</div>
+      <div class="step-body">CIT (Custom Item Textures) requires either <strong>OptiFine</strong> (Java Edition) or the <strong>CIT Resewn</strong> mod for Fabric. Both are free. Download from their official sites.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-title">Build your pack in the catalog</div>
+      <div class="step-body">Browse the catalog, click into any model, choose your color variants and placements, and click "Add to pack." Repeat for as many items as you like.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-title">Download your .zip</div>
+      <div class="step-body">Head to Your Pack and click "Download .zip." A custom resource pack containing only your selected items will download to your computer.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-title">Move it to resourcepacks</div>
+      <div class="step-body">
+        Drop the <code style="background:var(--parchment2);padding:1px 5px;border-radius:4px;font-size:12px">.zip</code> directly into your Minecraft resourcepacks folder — <strong>do not unzip it.</strong>
+        <br><br>
+        <strong>Windows:</strong> Press Win+R → type <code style="background:var(--parchment2);padding:1px 5px;border-radius:4px;font-size:12px">%appdata%\.minecraft\resourcepacks</code><br>
+        <strong>Mac:</strong> <code style="background:var(--parchment2);padding:1px 5px;border-radius:4px;font-size:12px">~/Library/Application Support/minecraft/resourcepacks</code>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">5</div>
+      <div class="step-title">Enable in-game</div>
+      <div class="step-body">Open Minecraft → <strong>Options → Resource Packs</strong>. Your pack will appear on the left. Click the arrow to move it to the active side. Click Done.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">6</div>
+      <div class="step-title">Apply the CIT in-game</div>
+      <div class="step-body">Place a <strong>base item</strong> (shown on each model page) in an <strong>anvil</strong>. Rename it to the exact code shown — for example <code style="background:var(--parchment2);padding:1px 5px;border-radius:4px;font-size:12px">ssc077a</code>. The texture will apply automatically.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Anvil explainer -->
+<div style="background:var(--parchment);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 28px">
+  <div style="max-width:700px;margin:0 auto">
+    <h2 class="section-title" style="margin-bottom:12px">Understanding the anvil code</h2>
+    <p style="font-size:14px;color:var(--ink-mid);margin-bottom:28px;line-height:1.7">Every model has a unique code. When you rename the base item in an anvil to that code, OptiFine/CIT Resewn swaps the texture.</p>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;font-family:monospace">
+      <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap">
+        <div style="text-align:center;padding:8px 16px;background:var(--terra-light);border-radius:var(--radius-sm);margin:4px">
+          <div style="font-size:18px;font-weight:600;color:var(--terra-dark)">ssc</div>
+          <div style="font-size:10px;color:var(--terra-dark);margin-top:4px">collection</div>
+        </div>
+        <div style="font-size:20px;color:var(--sand);margin:4px">+</div>
+        <div style="text-align:center;padding:8px 16px;background:var(--sage-light);border-radius:var(--radius-sm);margin:4px">
+          <div style="font-size:18px;font-weight:600;color:var(--sage-dark)">077</div>
+          <div style="font-size:10px;color:var(--sage-dark);margin-top:4px">model number</div>
+        </div>
+        <div style="font-size:20px;color:var(--sand);margin:4px">+</div>
+        <div style="text-align:center;padding:8px 16px;background:var(--parchment2);border-radius:var(--radius-sm);margin:4px">
+          <div style="font-size:18px;font-weight:600;color:var(--ink-mid)">a</div>
+          <div style="font-size:10px;color:var(--ink-mid);margin-top:4px">color</div>
+        </div>
+        <div style="font-size:20px;color:var(--sand);margin:4px">+</div>
+        <div style="text-align:center;padding:8px 16px;background:var(--parchment2);border-radius:var(--radius-sm);margin:4px">
+          <div style="font-size:18px;font-weight:600;color:var(--ink-mid)">center</div>
+          <div style="font-size:10px;color:var(--ink-mid);margin-top:4px">position (optional)</div>
+        </div>
+        <div style="font-size:20px;color:var(--sand);margin:4px">=</div>
+        <div style="text-align:center;padding:8px 16px;background:var(--ink);border-radius:var(--radius-sm);margin:4px">
+          <div style="font-size:18px;font-weight:600;color:var(--white)">ssc077acenter</div>
+          <div style="font-size:10px;color:var(--sand);margin-top:4px">anvil name</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:var(--ink-mid);margin-top:16px">If a model has only one position (no position code), just use the collection + number + color, e.g. <code style="background:var(--parchment2);padding:1px 5px;border-radius:4px">ssc085a</code></p>
+  </div>
+</div>
+
+<!-- Behind the scenes -->
+<div class="section">
+  <h2 class="section-title" style="margin-bottom:8px">Behind the scenes</h2>
+  <p style="font-size:14px;color:var(--ink-mid);margin-bottom:32px;max-width:600px;line-height:1.7">Curious how Sims 4 furniture becomes a Minecraft model? Here's the full pipeline used to create every item in the catalog.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+    <div class="step-card" style="padding:16px">
+      <div style="font-size:24px;margin-bottom:8px">📦</div>
+      <div class="step-title">Locate .package files</div>
+      <div class="step-body">Find the Sims 4 .package file containing the furniture model and textures.</div>
+    </div>
+    <div class="step-card" style="padding:16px">
+      <div style="font-size:24px;margin-bottom:8px">🎨</div>
+      <div class="step-title">Export &amp; posterize</div>
+      <div class="step-body">Extract the mesh and textures from Blender. Posterize textures down to 32 colors for a pixel-art look.</div>
+    </div>
+    <div class="step-card" style="padding:16px">
+      <div style="font-size:24px;margin-bottom:8px">🧊</div>
+      <div class="step-title">Voxelize</div>
+      <div class="step-body">Run .obj files through Drububu's online voxelizer to convert the smooth model into voxels.</div>
+    </div>
+    <div class="step-card" style="padding:16px">
+      <div style="font-size:24px;margin-bottom:8px">🔷</div>
+      <div class="step-title">Greedy meshing</div>
+      <div class="step-body">Import voxel models into Blender using a voxel importer that applies greedy meshing to reduce face count.</div>
+    </div>
+    <div class="step-card" style="padding:16px">
+      <div style="font-size:24px;margin-bottom:8px">⚙️</div>
+      <div class="step-title">Convert to .json</div>
+      <div class="step-body">Run scripts that turn the .obj files into Minecraft-compatible .json block model files.</div>
+    </div>
+    <div class="step-card" style="padding:16px">
+      <div style="font-size:24px;margin-bottom:8px">🖼️</div>
+      <div class="step-title">Bake textures</div>
+      <div class="step-body">Bake and export the texture for each voxel model variant.</div>
+    </div>
+    <div class="step-card" style="padding:16px">
+      <div style="font-size:24px;margin-bottom:8px">🧱</div>
+      <div class="step-title">Polish in Blockbench</div>
+      <div class="step-body">Import the .json and textures into Blockbench. Fix errors, adjust display settings, paint and refine.</div>
+    </div>
+    <div class="step-card" style="padding:16px">
+      <div style="font-size:24px;margin-bottom:8px">📸</div>
+      <div class="step-title">Screenshot &amp; package</div>
+      <div class="step-body">Screenshot each variant, then run scripts to generate .properties files and bundle everything into a resource pack.</div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Block Party</div>
+  <p>Free Minecraft CIT resource packs. <a href="faq.html">FAQ</a> · <a href="catalog.html">Browse catalog</a></p>
+</footer>
+
+<script src="data.js"></script>
+<script src="cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Pack — Block Party</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-mark"><span></span><span></span><span></span><span></span></div>
+    Block Party
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="catalog.html">Catalog</a>
+    <a class="nav-link" href="guide.html">How it works</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+  </div>
+  <div class="nav-spacer"></div>
+  <a class="cart-btn" href="cart.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    Your pack <span class="cart-badge">0</span>
+  </a>
+</nav>
+
+<div class="cart-page">
+  <h1 class="cart-page-title">Your pack</h1>
+  <p class="cart-page-sub">Review your selections, then download your custom resource pack. Only the models you chose will be included.</p>
+
+  <div id="cart-summary-bar" class="cart-summary-bar" style="display:none">
+    <div>
+      <span id="summary-count" style="font-weight:600;font-size:18px;font-family:var(--font-display)">0</span>
+      <span style="color:var(--ink-mid);font-size:14px"> models · </span>
+      <span id="summary-variants" style="font-weight:600;font-size:18px;font-family:var(--font-display)">0</span>
+      <span style="color:var(--ink-mid);font-size:14px"> variants selected</span>
+    </div>
+    <button class="download-btn" id="download-btn" style="width:auto;padding:12px 24px" onclick="downloadPack()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download .zip
+    </button>
+  </div>
+
+  <div id="cart-content"></div>
+
+  <div id="cart-empty" style="display:none;text-align:center;padding:80px 20px">
+    <div style="font-size:56px;margin-bottom:16px">📦</div>
+    <h2 style="font-family:var(--font-display);font-size:24px;margin-bottom:8px">Your pack is empty</h2>
+    <p style="color:var(--ink-mid);margin-bottom:24px">Browse the catalog and add the models you want.</p>
+    <a class="btn-primary" href="catalog.html">Browse catalog</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Block Party</div>
+  <p>Free Minecraft CIT resource packs. <a href="faq.html">FAQ</a> · <a href="guide.html">How it works</a></p>
+</footer>
+
+<!-- JSZip for client-side zip building -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script>
+  function renderCart() {
+    const cart = getCart();
+    const content = document.getElementById('cart-content');
+    const emptyState = document.getElementById('cart-empty');
+    const summaryBar = document.getElementById('cart-summary-bar');
+
+    if (cart.length === 0) {
+      content.innerHTML = '';
+      emptyState.style.display = '';
+      summaryBar.style.display = 'none';
+      return;
+    }
+
+    emptyState.style.display = 'none';
+    summaryBar.style.display = '';
+
+    let totalVariants = 0;
+    cart.forEach(item => { totalVariants += item.variants.length; });
+    document.getElementById('summary-count').textContent = cart.length;
+    document.getElementById('summary-variants').textContent = totalVariants;
+
+    content.innerHTML = '';
+    cart.forEach(item => {
+      const model = MODELS.find(m => m.id === item.id);
+      if (!model) return;
+
+      const variantNames = item.variants.map(code => {
+        const v = model.variants.find(x => x.code === code);
+        return v ? v.name : code;
+      });
+      const positionNames = item.positions.map(code => {
+        const p = model.positions.find(x => x.code === code);
+        return p ? p.name : (code || 'Default');
+      });
+
+      const colorDots = item.variants.map(code => {
+        const v = model.variants.find(x => x.code === code);
+        return v ? `<div class="color-dot" style="background:${v.color};width:12px;height:12px" title="${v.name}"></div>` : '';
+      }).join('');
+
+      const anvilCodes = item.variants.flatMap(vCode =>
+        item.positions.map(pCode => {
+          const name = `${model.anvilCode}${vCode}${pCode}`;
+          return `<code style="display:inline-block;background:var(--parchment2);border-radius:4px;padding:1px 6px;font-size:11px;margin:2px;color:var(--terra-dark)">${name}</code>`;
+        })
+      ).join('');
+
+      const panel = document.createElement('div');
+      panel.style.cssText = 'background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:16px;overflow:hidden';
+      panel.innerHTML = `
+        <div style="display:flex;align-items:center;gap:16px;padding:16px 20px;border-bottom:1px solid var(--border)">
+          <div style="width:56px;height:56px;background:var(--parchment);border-radius:var(--radius-md);overflow:hidden;flex-shrink:0">
+            <img src="images/${model.id}/${model.variants[0].code}.png" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.style.opacity='0.3'">
+          </div>
+          <div style="flex:1">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--terra);margin-bottom:3px">${COLLECTIONS[model.collection]?.name || model.collection}</div>
+            <div style="font-size:15px;font-weight:500">${model.name}</div>
+          </div>
+          <a href="model.html?id=${model.id}" style="font-size:12px;color:var(--terra);margin-right:8px">Edit</a>
+          <button onclick="doRemove('${model.id}')" style="background:none;border:none;cursor:pointer;color:var(--ink-light);font-size:18px;padding:4px" title="Remove">✕</button>
+        </div>
+        <div style="padding:14px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-light);margin-bottom:8px">Colors (${item.variants.length})</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px">${colorDots}</div>
+            <div style="font-size:12px;color:var(--ink-mid)">${variantNames.join(', ')}</div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-light);margin-bottom:8px">Placements (${item.positions.length})</div>
+            <div style="font-size:12px;color:var(--ink-mid)">${positionNames.join(', ')}</div>
+          </div>
+        </div>
+        <div style="padding:10px 20px 14px;border-top:1px solid var(--border);background:var(--parchment)">
+          <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-light);margin-bottom:6px">Anvil codes</div>
+          <div>${anvilCodes}</div>
+        </div>`;
+      content.appendChild(panel);
+    });
+  }
+
+  function doRemove(id) {
+    removeFromPack(id);
+    renderCart();
+  }
+
+  async function downloadPack() {
+    const cart = getCart();
+    if (cart.length === 0) return;
+
+    const btn = document.getElementById('download-btn');
+    btn.textContent = 'Building pack…';
+    btn.disabled = true;
+
+    const zip = new JSZip();
+
+    // pack.mcmeta
+    zip.file('pack.mcmeta', JSON.stringify({
+      pack: {
+        pack_format: 15,
+        description: "Block Party — Custom CIT Furniture Pack"
+      }
+    }, null, 2));
+
+    // For each cart item, include the model files
+    for (const item of cart) {
+      const model = MODELS.find(m => m.id === item.id);
+      if (!model) continue;
+
+      const baseFolder = `assets/minecraft/optifine/cit/${model.collection}/${model.id}/`;
+
+      for (const variantCode of item.variants) {
+        for (const posCode of item.positions) {
+          const suffix = posCode ? posCode : '';
+          const fileName = `${model.anvilCode}${variantCode}${suffix}`;
+          const folder = baseFolder + fileName + '/';
+
+          // .properties file
+          const propsContent =
+`type=item
+items=${model.baseItem.toLowerCase().replace(/ /g, '_')}
+nbt.display.Name=icontains:${fileName}
+model=${folder}${fileName}
+`;
+          zip.file(folder + fileName + '.properties', propsContent);
+
+          // placeholder .json (in real use, you'd fetch the actual file)
+          const jsonPlaceholder = JSON.stringify({
+            "__note": `Replace this file with the actual model JSON for ${fileName}`,
+            "credit": "Block Party — blockparty.github.io",
+            "model_id": model.id,
+            "variant": variantCode,
+            "position": posCode || "default"
+          }, null, 2);
+          zip.file(folder + fileName + '.json', jsonPlaceholder);
+
+          // Texture — attempt to fetch the actual PNG
+          try {
+            const imgPath = `images/${model.id}/${model.images[variantCode] || variantCode + '.png'}`;
+            const response = await fetch(imgPath);
+            if (response.ok) {
+              const blob = await response.blob();
+              zip.file(folder + fileName + '.png', blob);
+            }
+          } catch (e) {
+            // texture fetch failed — pack will still generate
+          }
+        }
+      }
+    }
+
+    // Generate and download
+    const blob = await zip.generateAsync({ type: 'blob' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'BlockParty_CustomPack.zip';
+    a.click();
+    URL.revokeObjectURL(url);
+
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download .zip`;
+    btn.disabled = false;
+    showToast('Pack downloaded! Drop it in your resourcepacks folder.');
+  }
+
+  renderCart();
+</script>
+</body>
+</html>

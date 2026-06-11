@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model — Block Party</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-mark"><span></span><span></span><span></span><span></span></div>
+    Block Party
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="catalog.html">Catalog</a>
+    <a class="nav-link" href="guide.html">How it works</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+  </div>
+  <div class="nav-spacer"></div>
+  <a class="cart-btn" href="cart.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    Your pack <span class="cart-badge">0</span>
+  </a>
+</nav>
+
+<div class="detail-page" id="detail-page">
+  <div style="padding:80px;text-align:center;color:var(--ink-light)">Loading…</div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Block Party</div>
+  <p>Free Minecraft CIT resource packs. <a href="faq.html">FAQ</a> · <a href="guide.html">How it works</a></p>
+</footer>
+
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const modelId = params.get('id');
+  const model = MODELS.find(m => m.id === modelId);
+
+  if (!model) {
+    document.getElementById('detail-page').innerHTML = `
+      <div style="text-align:center;padding:80px 20px">
+        <div style="font-size:48px;margin-bottom:16px">🔍</div>
+        <h2>Model not found</h2>
+        <p style="margin:8px 0 24px;color:var(--ink-mid)">This model doesn't exist or the URL is wrong.</p>
+        <a class="btn-primary" href="catalog.html">Back to catalog</a>
+      </div>`;
+  } else {
+    document.title = `${model.name} — Block Party`;
+    let selectedVariants = [];
+    let selectedPositions = [];
+    let galleryActive = `${model.variants[0].code}`;
+
+    function getImgSrc(code) {
+      return `images/${model.id}/${model.images[code] || code + '.png'}`;
+    }
+    function getPosImgSrc(posCode) {
+      const key = posCode === '' ? 'pos_default' : `pos_${posCode}`;
+      return `images/${model.id}/${model.images[key] || 'ssc' + model.number + (posCode ? posCode : '') + '.png'}`;
+    }
+
+    function render() {
+      const collection = COLLECTIONS[model.collection]?.name || model.collection;
+      const anvilExample = model.anvilCode + model.variants[0].code + (model.positions[0].code ? model.positions[0].code : '');
+
+      const variantSwatches = model.variants.map(v => `
+        <button class="swatch${selectedVariants.includes(v.code) ? ' selected' : ''}"
+          style="background:${v.color}"
+          title="${v.name}"
+          onclick="toggleVariant('${v.code}')"
+          aria-label="${v.name}">
+          <span class="swatch-check">✓</span>
+        </button>`).join('');
+
+      const placementBtns = model.positions.map(p => `
+        <button class="placement-btn${selectedPositions.includes(p.code) ? ' selected' : ''}"
+          onclick="togglePosition('${p.code}')">
+          <span>${p.name}</span>
+          <span>${p.description}</span>
+        </button>`).join('');
+
+      const galleryThumbs = model.variants.map(v => `
+        <div class="gallery-thumb${galleryActive === v.code ? ' active' : ''}" onclick="setGallery('${v.code}')">
+          <img src="${getImgSrc(v.code)}" alt="${v.name}" onerror="this.style.opacity='0.3'">
+        </div>`).join('');
+
+      const positionCards = model.positions.map(p => `
+        <div class="position-card">
+          <img src="${getPosImgSrc(p.code)}" alt="${p.name} position">
+          <div class="position-card-label">${p.name}</div>
+        </div>`).join('');
+
+      const canAdd = selectedVariants.length > 0 && selectedPositions.length > 0;
+      const selectedNames = selectedVariants.length
+        ? model.variants.filter(v => selectedVariants.includes(v.code)).map(v => v.name).join(', ')
+        : 'None selected';
+
+      document.getElementById('detail-page').innerHTML = `
+        <div class="breadcrumb">
+          <a href="catalog.html">Catalog</a>
+          <span>›</span>
+          <span>${collection}</span>
+          <span>›</span>
+          <span>${model.name}</span>
+        </div>
+
+        <div class="detail-grid">
+          <!-- Gallery -->
+          <div>
+            <div class="gallery-main">
+              <img id="gallery-main-img" src="${getImgSrc(galleryActive)}" alt="${model.name}">
+            </div>
+            <div class="gallery-thumbs">${galleryThumbs}</div>
+
+            <div class="positions-preview" style="margin-top:32px">
+              <div class="positions-preview-title">Block positions</div>
+              <div class="positions-grid">${positionCards}</div>
+            </div>
+          </div>
+
+          <!-- Panel -->
+          <div class="detail-panel">
+            <div class="detail-collection">${collection}</div>
+            <h1 class="detail-title">${model.name}</h1>
+            <p class="detail-desc">${model.description}</p>
+
+            <div class="detail-code-block">
+              <div class="detail-code-label">Anvil setup</div>
+              <div class="detail-code-row">
+                <span class="detail-code-key">Base item</span>
+                <span class="detail-code-val">${model.baseItem}</span>
+              </div>
+              <div class="detail-code-row">
+                <span class="detail-code-key">Rename to</span>
+                <span class="detail-code-val">${anvilExample}</span>
+              </div>
+              <div class="detail-code-row">
+                <span class="detail-code-key">Format</span>
+                <span class="detail-code-val">${model.anvilCode}[color][position]</span>
+              </div>
+            </div>
+
+            <!-- Variant select -->
+            <div class="select-section">
+              <div class="select-label">
+                Color variants
+                <span class="select-hint">select one or more</span>
+              </div>
+              <div class="swatch-grid">${variantSwatches}</div>
+              <div class="selected-names">${selectedNames}</div>
+            </div>
+
+            <!-- Position select -->
+            <div class="select-section">
+              <div class="select-label">
+                Block placements
+                <span class="select-hint">select one or more</span>
+              </div>
+              <div class="placement-grid">${placementBtns}</div>
+            </div>
+
+            <button class="add-to-pack-btn" ${canAdd ? '' : 'disabled'} onclick="doAddToPack()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Add to pack
+            </button>
+            ${!canAdd ? `<div class="add-hint">Select at least one color and one placement to continue</div>` : ''}
+
+            <div style="margin-top:16px;display:flex;gap:8px">
+              <button class="btn-secondary" style="flex:1;justify-content:center" onclick="selectAll()">Select all colors</button>
+              <button class="btn-secondary" style="flex:1;justify-content:center" onclick="selectAllPositions()">All placements</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function setGallery(code) {
+      galleryActive = code;
+      const img = document.getElementById('gallery-main-img');
+      if (img) img.src = getImgSrc(code);
+      document.querySelectorAll('.gallery-thumb').forEach((el, i) => {
+        el.classList.toggle('active', model.variants[i]?.code === code);
+      });
+    }
+
+    function toggleVariant(code) {
+      const idx = selectedVariants.indexOf(code);
+      if (idx >= 0) selectedVariants.splice(idx, 1);
+      else selectedVariants.push(code);
+      if (selectedVariants.includes(code) || selectedVariants.length === 0) setGallery(code);
+      render();
+    }
+
+    function togglePosition(code) {
+      const idx = selectedPositions.indexOf(code);
+      if (idx >= 0) selectedPositions.splice(idx, 1);
+      else selectedPositions.push(code);
+      render();
+    }
+
+    function selectAll() {
+      selectedVariants = model.variants.map(v => v.code);
+      render();
+    }
+
+    function selectAllPositions() {
+      selectedPositions = model.positions.map(p => p.code);
+      render();
+    }
+
+    function doAddToPack() {
+      addToPack(model.id, [...selectedVariants], [...selectedPositions]);
+    }
+
+    render();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Block Party</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-mark"><span></span><span></span><span></span><span></span></div>
+    Block Party
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="catalog.html">Catalog</a>
+    <a class="nav-link" href="guide.html">How it works</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+  </div>
+  <div class="nav-spacer"></div>
+  <a class="cart-btn" href="cart.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    Your pack <span class="cart-badge">0</span>
+  </a>
+</nav>
+
+<section class="hero" style="padding:56px 28px 48px">
+  <div class="hero-eyebrow">Questions &amp; answers</div>
+  <h1 style="font-size:clamp(28px,4vw,48px)">Frequently asked questions</h1>
+  <p>Can't find your answer here? The <a href="guide.html" style="color:var(--terra)">How it works</a> page has more detail.</p>
+</section>
+
+<div class="section">
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Is this completely free?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">Yes — Block Party is and always will be free. There's no catch, no account required, and no premium tier. The whole point is to give you exactly the pack you want without paying for it.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Do I need OptiFine or a mod?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. CIT (Custom Item Textures) is not a vanilla Minecraft feature. You need either <strong>OptiFine</strong> for Java Edition, or the <strong>CIT Resewn</strong> mod if you're using Fabric. Both are free and widely used. Download OptiFine from optifine.net and CIT Resewn from Modrinth.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Which Minecraft versions are supported?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">Models are built and tested for <strong>Java Edition 1.20+</strong>. Most will work on older versions as long as OptiFine is installed and supports that version's pack format. Bedrock Edition is not supported — CIT is a Java-only feature.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Why does my pack only have placeholder .json files?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">The website is still being set up! The image screenshots are here, but the actual model .json files need to be added to the server. Once they are, the downloaded pack will include everything needed. Check back soon, or reach out if you'd like the files directly.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        How do I apply the texture in-game?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">Place the correct <strong>base item</strong> (shown on each model's page) into an <strong>anvil</strong>. Rename it to the exact code — for example, <code style="background:var(--parchment2);padding:1px 5px;border-radius:4px">ssc077a</code> for the Natural Floor Hammock Stand. The texture applies automatically as long as your pack is active.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        What is the "position" code in the anvil name?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">Some models have multiple display modes — for example, the Floor Hammock Stand has a "default" position and a "center" position, which place the model differently relative to the block. If a model has position options, you add the position name to the end of the anvil code: <code style="background:var(--parchment2);padding:1px 5px;border-radius:4px">ssc077acenter</code>. If there's only one position, no suffix is needed.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Can I add more items later without redownloading everything?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">Yes! Come back to the catalog, select your new items, and download a fresh pack. You can then replace the old .zip in your resourcepacks folder, or keep both active and let Minecraft merge them (top pack takes priority).</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Will my pack selections be saved if I close the browser?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">Yes — your pack selections are saved in your browser's local storage, so they'll persist between visits on the same device and browser. They won't carry over to a different device or a private/incognito window.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Where do the models come from originally?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">All models are sourced from The Sims 4 community and converted into Minecraft CITs through a multi-step pipeline: textures are posterized, meshes are voxelized, greedy-meshed to reduce geometry, converted to .json, and polished in Blockbench. See the <a href="guide.html" style="color:var(--terra)">How it works</a> page for the full breakdown.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Are more models being added?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">Yes! The catalog will grow over time as more models from the Seaside Suburbs Collection — and future collections — are completed. Each model takes significant time to convert, so new additions happen gradually.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Can I use these in a server or shared world?
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. Resource packs work client-side — each player who wants to see the custom textures just needs to have the pack active in their own Minecraft. You can also set a server resource pack so it's offered to all players who join.</div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:40px;padding:24px;background:var(--parchment);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:500px">
+    <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px">Still have a question?</div>
+    <div style="font-size:13px;color:var(--ink-mid);line-height:1.6">Check out the <a href="guide.html" style="color:var(--terra)">full installation guide</a> for step-by-step instructions, or browse the <a href="catalog.html" style="color:var(--terra)">catalog</a> to start building your pack.</div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-logo">Block Party</div>
+  <p>Free Minecraft CIT resource packs. <a href="guide.html">How it works</a> · <a href="catalog.html">Browse catalog</a></p>
+</footer>
+
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script>
+  function toggle(btn) {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
