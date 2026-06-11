@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Block Party — Minecraft CIT Furniture Resource Packs</title>
+  <meta name="description" content="Build your own custom Minecraft furniture resource pack. Browse Sims 4-converted CIT models, pick your colors and placements, and download a pack with only what you want." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-mark">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    Block Party
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="catalog.html">Catalog</a>
+    <a class="nav-link" href="guide.html">How it works</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+  </div>
+  <div class="nav-spacer"></div>
+  <a class="cart-btn" href="cart.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    Your pack
+    <span class="cart-badge">0</span>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Free Minecraft Resource Packs</div>
+  <h1>Furniture that actually<br>feels like home.</h1>
+  <p>Sims 4 furniture, voxelized and brought to Minecraft as custom item textures. Pick exactly what you want — no bloat, no fuss.</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="catalog.html">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Browse the catalog
+    </a>
+    <a class="btn-secondary" href="guide.html">How it works</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar" id="stats-bar">
+  <div class="stat">
+    <div class="stat-num" id="stat-models">—</div>
+    <div class="stat-label">Models</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" id="stat-variants">—</div>
+    <div class="stat-label">Color variants</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" id="stat-collections">—</div>
+    <div class="stat-label">Collections</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">Free</div>
+    <div class="stat-label">Always</div>
+  </div>
+</div>
+
+<!-- FEATURED MODELS -->
+<div class="section">
+  <div class="section-header">
+    <h2 class="section-title">Seaside Suburbs Collection</h2>
+    <a class="section-link" href="catalog.html">View all →</a>
+  </div>
+  <div class="model-grid" id="featured-grid"></div>
+</div>
+
+<!-- HOW IT WORKS STRIP -->
+<div style="background:var(--parchment); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:56px 28px;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-header">
+      <h2 class="section-title">Your pack, your way.</h2>
+      <a class="section-link" href="guide.html">Full guide →</a>
+    </div>
+    <div class="steps-grid" style="margin-top:0">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Browse the catalog</div>
+        <div class="step-body">Scroll through furniture models. Click any model to see all color variants and block placements.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Build your pack</div>
+        <div class="step-body">Select the specific colors and positions you want. Add as many models as you like — only what you'll actually use.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Download &amp; play</div>
+        <div class="step-body">Download your custom .zip resource pack. Drop it in your Minecraft resourcepacks folder and you're done.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">Block Party</div>
+  <p>
+    Free Minecraft CIT resource packs — Sims 4 furniture converted to voxels.<br>
+    Made with care. Always free. <a href="faq.html">FAQ</a> · <a href="guide.html">How it works</a>
+  </p>
+</footer>
+
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script>
+  // Stats
+  const totalVariants = MODELS.reduce((s, m) => s + m.variants.length, 0);
+  const totalCollections = [...new Set(MODELS.map(m => m.collection))].length;
+  document.getElementById('stat-models').textContent = MODELS.length;
+  document.getElementById('stat-variants').textContent = totalVariants;
+  document.getElementById('stat-collections').textContent = totalCollections;
+
+  // Featured grid
+  const grid = document.getElementById('featured-grid');
+  MODELS.forEach(model => {
+    const firstVariant = model.variants[0];
+    const imgSrc = `images/${model.id}/${firstVariant.code}.png`;
+    const dots = model.variants.slice(0, 8).map(v =>
+      `<div class="color-dot" style="background:${v.color}" title="${v.name}"></div>`
+    ).join('');
+    grid.innerHTML += `
+      <div class="model-card" onclick="location.href='model.html?id=${model.id}'">
+        <div class="model-thumb">
+          <img src="${imgSrc}" alt="${model.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="thumb-placeholder" style="display:none">🪑</div>
+          <button class="quick-add-btn" onclick="event.stopPropagation();quickAdd('${model.id}')">+ Quick add</button>
+        </div>
+        <div class="model-info">
+          <div class="model-collection">${COLLECTIONS[model.collection]?.name || model.collection}</div>
+          <div class="model-name">${model.name}</div>
+          <div class="model-meta">${model.variants.length} colors · ${model.positions.length} placement${model.positions.length !== 1 ? 's' : ''}</div>
+          <div class="color-dots">${dots}</div>
+        </div>
+      </div>`;
+  });
+</script>
+</body>
+</html>
