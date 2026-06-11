@@ -32,22 +32,18 @@
   <!-- SIDEBAR FILTERS -->
   <aside class="filter-sidebar">
     <div class="filter-sidebar-title">Filter</div>
-
     <div class="filter-group">
       <div class="filter-group-label">Category</div>
       <div id="filter-category"></div>
     </div>
-
     <div class="filter-group">
       <div class="filter-group-label">Room</div>
       <div id="filter-room"></div>
     </div>
-
     <div class="filter-group">
       <div class="filter-group-label">Color</div>
       <div id="filter-color"></div>
     </div>
-
     <button class="filter-clear" id="clear-filters" style="display:none">✕ Clear all filters</button>
   </aside>
 
@@ -56,15 +52,12 @@
     <div class="catalog-topbar">
       <div class="catalog-search">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="search-input" placeholder="Search models…" />
+        <input type="text" id="search-input" placeholder="Search by name, base item, or code…" />
       </div>
       <div class="catalog-count" id="catalog-count">Loading…</div>
     </div>
-
     <div class="active-filters" id="active-filters"></div>
-
     <div class="model-grid" id="catalog-grid"></div>
-
     <div class="empty-state" id="empty-state" style="display:none">
       <div class="empty-state-icon">🔍</div>
       <h3>No models found</h3>
@@ -72,6 +65,41 @@
     </div>
   </div>
 
+</div>
+
+<!-- QUICK ADD POPUP -->
+<div class="quickadd-overlay" id="quickadd-overlay" onclick="closeQuickAdd(event)">
+  <div class="quickadd-panel" id="quickadd-panel">
+    <div class="quickadd-header">
+      <div class="quickadd-thumb"><img id="qa-thumb" src="" alt=""></div>
+      <div>
+        <div class="quickadd-title" id="qa-title"></div>
+        <div class="quickadd-sub" id="qa-sub"></div>
+      </div>
+      <button class="quickadd-close" onclick="closeQuickAdd()">✕</button>
+    </div>
+    <div class="quickadd-body">
+      <div class="quickadd-preview">
+        <img id="qa-preview" src="" alt="">
+      </div>
+
+      <div class="quickadd-section-label">
+        Color variants
+        <button class="quickadd-select-all" onclick="qaSelectAll('variants')">Select all</button>
+      </div>
+      <div class="quickadd-swatches" id="qa-swatches"></div>
+
+      <div class="quickadd-section-label">
+        Block placements
+        <button class="quickadd-select-all" onclick="qaSelectAll('positions')">Select all</button>
+      </div>
+      <div class="quickadd-placements" id="qa-placements"></div>
+    </div>
+    <div class="quickadd-footer">
+      <button class="quickadd-add-btn" id="qa-add-btn" onclick="doQuickAdd()" disabled>Add to pack</button>
+      <button class="quickadd-view-btn" id="qa-view-btn">View full page →</button>
+    </div>
+  </div>
 </div>
 
 <footer class="footer">
@@ -82,10 +110,10 @@
 <script src="data.js"></script>
 <script src="cart.js"></script>
 <script>
+  // ---------- Filters ----------
   const activeFilters = { category: [], room: [], color: [] };
   let searchQuery = '';
 
-  // Build filter sidebar
   function buildFilters() {
     Object.entries(FILTER_OPTIONS).forEach(([type, options]) => {
       const container = document.getElementById(`filter-${type}`);
@@ -104,13 +132,8 @@
 
   function toggleFilter(type, value, btn) {
     const idx = activeFilters[type].indexOf(value);
-    if (idx >= 0) {
-      activeFilters[type].splice(idx, 1);
-      btn.classList.remove('active');
-    } else {
-      activeFilters[type].push(value);
-      btn.classList.add('active');
-    }
+    if (idx >= 0) { activeFilters[type].splice(idx, 1); btn.classList.remove('active'); }
+    else { activeFilters[type].push(value); btn.classList.add('active'); }
     renderActiveFilterPills();
     renderGrid();
   }
@@ -135,10 +158,8 @@
         pill.innerHTML = `${opt?.label || val} ✕`;
         pill.addEventListener('click', () => {
           activeFilters[type] = activeFilters[type].filter(v => v !== val);
-          document.querySelectorAll(`.filter-option[data-type="${type}"][data-value="${val}"]`)
-            .forEach(b => b.classList.remove('active'));
-          renderActiveFilterPills();
-          renderGrid();
+          document.querySelectorAll(`.filter-option[data-type="${type}"][data-value="${val}"]`).forEach(b => b.classList.remove('active'));
+          renderActiveFilterPills(); renderGrid();
         });
         container.appendChild(pill);
       });
@@ -152,6 +173,8 @@
         const q = searchQuery.toLowerCase();
         const match = model.name.toLowerCase().includes(q) ||
           model.description.toLowerCase().includes(q) ||
+          model.baseItem.toLowerCase().includes(q) ||
+          model.anvilCode.toLowerCase().includes(q) ||
           model.tags.some(t => t.includes(q));
         if (!match) return false;
       }
@@ -162,6 +185,35 @@
     });
   }
 
+  // ---------- Grid ----------
+  function getImgSrc(model, variantCode) {
+    const file = model.images?.[variantCode] || (variantCode + '.png');
+    return `images/${model.id}/${file}`;
+  }
+
+  // Pick the best variant to show — first one matching the active color filter, else first overall
+  function getBestVariant(model) {
+    if (activeFilters.color.length) {
+      // Map color filter values to variant name keywords
+      const colorKeywords = {
+        blue:    ['blue', 'navy', 'ocean', 'cobalt', 'sky', 'teal', 'azure'],
+        green:   ['green', 'sage', 'forest', 'mint', 'olive', 'emerald'],
+        neutral: ['white', 'cream', 'gray', 'grey', 'silver', 'warm', 'cool', 'stone', 'taupe', 'natural'],
+        brown:   ['brown', 'tan', 'oak', 'walnut', 'espresso', 'wood', 'cedar', 'mahogany'],
+        pink:    ['pink', 'blush', 'rose', 'mauve', 'coral'],
+        purple:  ['purple', 'violet', 'lavender', 'plum'],
+      };
+      for (const colorFilter of activeFilters.color) {
+        const keywords = colorKeywords[colorFilter] || [colorFilter];
+        const match = model.variants.find(v =>
+          keywords.some(kw => v.name.toLowerCase().includes(kw))
+        );
+        if (match) return match;
+      }
+    }
+    return model.variants[0];
+  }
+
   function renderGrid() {
     const grid = document.getElementById('catalog-grid');
     const empty = document.getElementById('empty-state');
@@ -170,48 +222,162 @@
 
     count.textContent = `${models.length} model${models.length !== 1 ? 's' : ''}`;
     grid.innerHTML = '';
-
-    if (models.length === 0) {
-      grid.style.display = 'none';
-      empty.style.display = '';
-      return;
-    }
-    grid.style.display = '';
-    empty.style.display = 'none';
+    if (models.length === 0) { grid.style.display = 'none'; empty.style.display = ''; return; }
+    grid.style.display = ''; empty.style.display = 'none';
 
     models.forEach(model => {
-      const firstVariant = model.variants[0];
-      const imgSrc = `images/${model.id}/${firstVariant.code}.png`;
-      const dots = model.variants.slice(0, 10).map(v =>
-        `<div class="color-dot" style="background:${v.color}" title="${v.name}"></div>`
+      const activeVariant = getBestVariant(model);
+      const imgSrc = getImgSrc(model, activeVariant.code);
+
+      // Color dots with hover-to-preview
+      const dots = model.variants.slice(0, 12).map(v =>
+        `<div class="color-dot"
+          style="background:${v.color};${v.code === activeVariant.code ? 'outline:2px solid var(--ink-mid);outline-offset:1px;' : ''}"
+          title="${v.name}"
+          data-img="${getImgSrc(model, v.code)}"
+          onmouseenter="previewVariant(this, '${model.id}')"
+          onmouseleave="resetPreview('${model.id}', '${imgSrc}')">
+        </div>`
       ).join('');
+
       const card = document.createElement('div');
       card.className = 'model-card';
+      card.dataset.modelId = model.id;
       card.innerHTML = `
         <div class="model-thumb">
-          <img src="${imgSrc}" alt="${model.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="thumb-placeholder" style="display:none">🪑</div>
-          <button class="quick-add-btn" title="Add all variants and placements">+ Quick add</button>
+          <img id="thumb-${model.id}" src="${imgSrc}" alt="${model.name}" onerror="this.style.opacity='0.2'">
+          <button class="quick-add-btn" title="Quick select">+ Quick add</button>
         </div>
         <div class="model-info">
-          <div class="model-collection">${COLLECTIONS[model.collection]?.name || model.collection}</div>
+          <div class="model-collection" style="display:flex;justify-content:space-between;align-items:center">
+            <span>${model.baseItem}</span>
+            <span style="font-family:monospace;font-size:10px;background:var(--parchment2);padding:1px 6px;border-radius:4px;color:var(--terra-dark);letter-spacing:0">${model.anvilCode}</span>
+          </div>
           <div class="model-name">${model.name}</div>
           <div class="model-meta">${model.variants.length} colors · ${model.positions.length} placement${model.positions.length !== 1 ? 's' : ''}</div>
           <div class="color-dots">${dots}</div>
         </div>`;
+
       card.querySelector('.quick-add-btn').addEventListener('click', e => {
         e.stopPropagation();
-        quickAdd(model.id);
+        openQuickAdd(model.id);
       });
       card.addEventListener('click', () => location.href = `model.html?id=${model.id}`);
       grid.appendChild(card);
     });
   }
 
-  document.getElementById('search-input').addEventListener('input', e => {
-    searchQuery = e.target.value.trim();
-    renderGrid();
+  // ---------- Hover preview ----------
+  function previewVariant(dot, modelId) {
+    const img = document.getElementById(`thumb-${modelId}`);
+    if (img) img.src = dot.dataset.img;
+  }
+  function resetPreview(modelId, originalSrc) {
+    const img = document.getElementById(`thumb-${modelId}`);
+    if (img) img.src = originalSrc;
+  }
+
+  // ---------- Quick Add Popup ----------
+  let qaModel = null;
+  let qaSelectedVariants = [];
+  let qaSelectedPositions = [];
+
+  function openQuickAdd(modelId) {
+    qaModel = MODELS.find(m => m.id === modelId);
+    if (!qaModel) return;
+    qaSelectedVariants = [];
+    qaSelectedPositions = [];
+
+    document.getElementById('qa-title').textContent = qaModel.name;
+    document.getElementById('qa-sub').textContent = `${qaModel.baseItem} · ${qaModel.anvilCode}`;
+    document.getElementById('qa-thumb').src = `images/${qaModel.id}/${qaModel.variants[0].code}.png`;
+    document.getElementById('qa-preview').src = `images/${qaModel.id}/${qaModel.variants[0].code}.png`;
+    document.getElementById('qa-view-btn').onclick = () => location.href = `model.html?id=${qaModel.id}`;
+
+    renderQASwatches();
+    renderQAPlacements();
+    updateQABtn();
+
+    document.getElementById('quickadd-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeQuickAdd(e) {
+    if (e && e.target !== document.getElementById('quickadd-overlay')) return;
+    document.getElementById('quickadd-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function renderQASwatches() {
+    const container = document.getElementById('qa-swatches');
+    container.innerHTML = qaModel.variants.map(v => `
+      <button class="quickadd-swatch${qaSelectedVariants.includes(v.code) ? ' selected' : ''}"
+        style="background:${v.color}"
+        title="${v.name}"
+        onclick="toggleQAVariant('${v.code}', '${`images/${qaModel.id}/${qaModel.images?.[v.code] || v.code + '.png'}`}')">
+        <span class="swatch-check">✓</span>
+      </button>`).join('');
+  }
+
+  function renderQAPlacements() {
+    const container = document.getElementById('qa-placements');
+    container.innerHTML = qaModel.positions.map(p => `
+      <button class="quickadd-place${qaSelectedPositions.includes(p.code) ? ' selected' : ''}"
+        onclick="toggleQAPosition('${p.code}')">
+        ${p.name}
+      </button>`).join('');
+  }
+
+  function toggleQAVariant(code, imgSrc) {
+    const idx = qaSelectedVariants.indexOf(code);
+    if (idx >= 0) qaSelectedVariants.splice(idx, 1);
+    else { qaSelectedVariants.push(code); document.getElementById('qa-preview').src = imgSrc; }
+    renderQASwatches();
+    updateQABtn();
+  }
+
+  function toggleQAPosition(code) {
+    const idx = qaSelectedPositions.indexOf(code);
+    if (idx >= 0) qaSelectedPositions.splice(idx, 1);
+    else qaSelectedPositions.push(code);
+    renderQAPlacements();
+    updateQABtn();
+  }
+
+  function qaSelectAll(type) {
+    if (type === 'variants') {
+      qaSelectedVariants = qaModel.variants.map(v => v.code);
+      document.getElementById('qa-preview').src = `images/${qaModel.id}/${qaModel.variants[0].code}.png`;
+      renderQASwatches();
+    } else {
+      qaSelectedPositions = qaModel.positions.map(p => p.code);
+      renderQAPlacements();
+    }
+    updateQABtn();
+  }
+
+  function updateQABtn() {
+    const btn = document.getElementById('qa-add-btn');
+    const canAdd = qaSelectedVariants.length > 0 && qaSelectedPositions.length > 0;
+    btn.disabled = !canAdd;
+    btn.textContent = canAdd
+      ? `Add to pack (${qaSelectedVariants.length} color${qaSelectedVariants.length !== 1 ? 's' : ''}, ${qaSelectedPositions.length} placement${qaSelectedPositions.length !== 1 ? 's' : ''})`
+      : 'Select colors & placements';
+  }
+
+  function doQuickAdd() {
+    if (!qaModel || qaSelectedVariants.length === 0 || qaSelectedPositions.length === 0) return;
+    addToPack(qaModel.id, [...qaSelectedVariants], [...qaSelectedPositions]);
+    document.getElementById('quickadd-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { document.getElementById('quickadd-overlay').classList.remove('open'); document.body.style.overflow = ''; }
   });
+
+  document.getElementById('search-input').addEventListener('input', e => { searchQuery = e.target.value.trim(); renderGrid(); });
   document.getElementById('clear-filters').addEventListener('click', clearAllFilters);
 
   buildFilters();
