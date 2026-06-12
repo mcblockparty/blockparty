@@ -122,54 +122,6 @@
   </div>
 </div>
 
-<!-- Behind the scenes -->
-<div class="section">
-  <h2 class="section-title" style="margin-bottom:8px">Behind the scenes</h2>
-  <p style="font-size:14px;color:var(--ink-mid);margin-bottom:32px;max-width:600px;line-height:1.7">Curious how Sims 4 furniture becomes a Minecraft model? Here's the full pipeline used to create every item in the catalog.</p>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
-    <div class="step-card" style="padding:16px">
-      <div style="font-size:24px;margin-bottom:8px">📦</div>
-      <div class="step-title">Locate .package files</div>
-      <div class="step-body">Find the Sims 4 .package file containing the furniture model and textures.</div>
-    </div>
-    <div class="step-card" style="padding:16px">
-      <div style="font-size:24px;margin-bottom:8px">🎨</div>
-      <div class="step-title">Export &amp; posterize</div>
-      <div class="step-body">Extract the mesh and textures from Blender. Posterize textures down to 32 colors for a pixel-art look.</div>
-    </div>
-    <div class="step-card" style="padding:16px">
-      <div style="font-size:24px;margin-bottom:8px">🧊</div>
-      <div class="step-title">Voxelize</div>
-      <div class="step-body">Run .obj files through Drububu's online voxelizer to convert the smooth model into voxels.</div>
-    </div>
-    <div class="step-card" style="padding:16px">
-      <div style="font-size:24px;margin-bottom:8px">🔷</div>
-      <div class="step-title">Greedy meshing</div>
-      <div class="step-body">Import voxel models into Blender using a voxel importer that applies greedy meshing to reduce face count.</div>
-    </div>
-    <div class="step-card" style="padding:16px">
-      <div style="font-size:24px;margin-bottom:8px">⚙️</div>
-      <div class="step-title">Convert to .json</div>
-      <div class="step-body">Run scripts that turn the .obj files into Minecraft-compatible .json block model files.</div>
-    </div>
-    <div class="step-card" style="padding:16px">
-      <div style="font-size:24px;margin-bottom:8px">🖼️</div>
-      <div class="step-title">Bake textures</div>
-      <div class="step-body">Bake and export the texture for each voxel model variant.</div>
-    </div>
-    <div class="step-card" style="padding:16px">
-      <div style="font-size:24px;margin-bottom:8px">🧱</div>
-      <div class="step-title">Polish in Blockbench</div>
-      <div class="step-body">Import the .json and textures into Blockbench. Fix errors, adjust display settings, paint and refine.</div>
-    </div>
-    <div class="step-card" style="padding:16px">
-      <div style="font-size:24px;margin-bottom:8px">📸</div>
-      <div class="step-title">Screenshot &amp; package</div>
-      <div class="step-body">Screenshot each variant, then run scripts to generate .properties files and bundle everything into a resource pack.</div>
-    </div>
-  </div>
-</div>
 
 <footer class="footer">
   <div class="footer-logo">Block Party</div>
