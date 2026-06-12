@@ -1528,8 +1528,8 @@ const MODELS = [
     ],
     positions: [
       { code: "back", name: "Back", description: "Back of block" },
-      { code: "front", name: "Front", description: "Placed on front of block" }
-      { code: "innercorner", name: "Inner Corner", description: "Fits into an inner corner" }
+      { code: "front", name: "Front", description: "Placed on front of block" },
+      { code: "innercorner", name: "Inner Corner", description: "Fits into an inner corner" },
       { code: "outercorner", name: "Outer Corner", description: "Fits into an outer corner" }
 
     ],
@@ -1546,9 +1546,9 @@ const MODELS = [
       h: "h.png",
       i: "i.png",
       pos_back: "ssc090back.png",
-      pos_front: "ssc090front.png"
-      pos_innercorner: "ssc090innercorner.png"
-      pos_front: "ssc090outercorner.png"
+      pos_front: "ssc090front.png",
+      pos_innercorner: "ssc090innercorner.png",
+      pos_outercorner: "ssc090outercorner.png"
     }
   },
   {
