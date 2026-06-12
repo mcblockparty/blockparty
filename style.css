@@ -334,14 +334,22 @@ input, select { font-family: var(--font-body); }
 }
 .color-dots {
   display: flex;
-  gap: 3px;
+  gap: 4px;
   flex-wrap: wrap;
+  margin-top: 2px;
 }
 .color-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-  border: 1px solid rgba(0,0,0,0.08);
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  cursor: pointer;
+  transition: transform 0.1s;
+  flex-shrink: 0;
+}
+.color-dot:hover {
+  transform: scale(1.2);
+  border-color: rgba(0,0,0,0.25);
 }
 
 /* ---------- Catalog Layout ---------- */
