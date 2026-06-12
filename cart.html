@@ -148,72 +148,81 @@
     renderCart();
   }
 
+  async function fetchFile(path) {
+    try {
+      const res = await fetch(path);
+      if (!res.ok) return null;
+      return res;
+    } catch { return null; }
+  }
+
   async function downloadPack() {
     const cart = getCart();
     if (cart.length === 0) return;
 
     const btn = document.getElementById('download-btn');
-    btn.textContent = 'Building pack…';
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Building pack…`;
     btn.disabled = true;
 
     const zip = new JSZip();
+    const missing = [];
 
     // pack.mcmeta
     zip.file('pack.mcmeta', JSON.stringify({
-      pack: {
-        pack_format: 15,
-        description: "Block Party — Custom CIT Furniture Pack"
-      }
+      pack: { pack_format: 15, description: "Block Party — Custom CIT Furniture Pack" }
     }, null, 2));
 
-    // For each cart item, include the model files
     for (const item of cart) {
       const model = MODELS.find(m => m.id === item.id);
       if (!model) continue;
 
-      const baseFolder = `assets/minecraft/optifine/cit/${model.collection}/${model.id}/`;
+      // Derive the model number without leading zero for texture paths
+      // e.g. "061" -> "61", "077" -> "77"
+      const numNoZero = parseInt(model.number, 10).toString();
+
+      // Textures are shared per variant across all positions
+      // Texture path inside zip: assets/minecraft/textures/item/[num]/ssc[num]_[variantCode].png
+      const texturesAdded = new Set();
 
       for (const variantCode of item.variants) {
+        // Add the baked texture (once per variant)
+        const textureName = `ssc${numNoZero}_${variantCode}`;
+        const textureZipPath = `assets/minecraft/textures/item/${numNoZero}/${textureName}.png`;
+
+        if (!texturesAdded.has(textureName)) {
+          const texRes = await fetchFile(`models/${model.id}/${textureName}.png`);
+          if (texRes) {
+            zip.file(textureZipPath, await texRes.blob());
+            texturesAdded.add(textureName);
+          } else {
+            missing.push(`${model.id}/${textureName}.png`);
+          }
+        }
+
+        // Add .json and .properties for each position
         for (const posCode of item.positions) {
-          const suffix = posCode ? posCode : '';
-          const fileName = `${model.anvilCode}${variantCode}${suffix}`;
-          const folder = baseFolder + fileName + '/';
+          const fileName = `${model.anvilCode}${posCode}${variantCode}`;
 
-          // .properties file
-          const propsContent =
-`type=item
-items=${model.baseItem.toLowerCase().replace(/ /g, '_')}
-nbt.display.Name=icontains:${fileName}
-model=${folder}${fileName}
-`;
-          zip.file(folder + fileName + '.properties', propsContent);
+          // Fetch real .json from models folder
+          const jsonRes = await fetchFile(`models/${model.id}/${fileName}.json`);
+          if (jsonRes) {
+            zip.file(`assets/minecraft/models/item/${fileName}.json`, await jsonRes.text());
+          } else {
+            missing.push(`${model.id}/${fileName}.json`);
+          }
 
-          // placeholder .json (in real use, you'd fetch the actual file)
-          const jsonPlaceholder = JSON.stringify({
-            "__note": `Replace this file with the actual model JSON for ${fileName}`,
-            "credit": "Block Party — blockparty.github.io",
-            "model_id": model.id,
-            "variant": variantCode,
-            "position": posCode || "default"
-          }, null, 2);
-          zip.file(folder + fileName + '.json', jsonPlaceholder);
-
-          // Texture — attempt to fetch the actual PNG
-          try {
-            const imgPath = `images/${model.id}/${model.images[variantCode] || variantCode + '.png'}`;
-            const response = await fetch(imgPath);
-            if (response.ok) {
-              const blob = await response.blob();
-              zip.file(folder + fileName + '.png', blob);
-            }
-          } catch (e) {
-            // texture fetch failed — pack will still generate
+          // Fetch real .properties from models folder
+          const propRes = await fetchFile(`models/${model.id}/${fileName}.properties`);
+          if (propRes) {
+            zip.file(`assets/minecraft/optifine/cit/item/${fileName}.properties`, await propRes.text());
+          } else {
+            missing.push(`${model.id}/${fileName}.properties`);
           }
         }
       }
     }
 
-    // Generate and download
+    // Generate and trigger download
     const blob = await zip.generateAsync({ type: 'blob' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -222,9 +231,15 @@ model=${folder}${fileName}
     a.click();
     URL.revokeObjectURL(url);
 
-    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download .zip`;
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download .zip`;
     btn.disabled = false;
-    showToast('Pack downloaded! Drop it in your resourcepacks folder.');
+
+    if (missing.length > 0) {
+      showToast(`Pack downloaded! ${missing.length} file(s) not yet available.`);
+      console.warn('Missing model files:', missing);
+    } else {
+      showToast('Pack downloaded! Drop it in your resourcepacks folder.');
+    }
   }
 
   renderCart();
