@@ -157,33 +157,7 @@ const MODELS = [
       pos_default: "ssc077.png"
     }
   },
-  {
-    id: "Unique model ID e.g. ssc077",
-    name: "Display name",
-    collection: "Collection code e.g. ssc",
-    number: "3-digit model number",
-    category: "seating / decor / utility / outdoor",
-    room: ["Comma-separated: living", "bedroom", "outdoor", "garden", "garage", "hallway"],
-    description: "One or two sentences",
-    baseItem: "Minecraft item name",
-    anvilCode: "Anvil code prefix e.g. ssc077",
-    variants: [
-      { code: "Comma-separated letter codes IN ORDER", name: "Comma-separated names IN SAME ORDER as codes", color: "#Comma-separated hex colors IN SAME ORDER as codes" }
-    ],
-    positions: [
-      { code: "Comma-separated. Leave blank for default position. e.g.", name: "Comma-separated position display names IN SAME ORDER", description: "Comma-separated descriptions IN SAME ORDER" },
-      { code: "center  or", name: "Position 2", description: "" },
-      { code: "corner", name: "Position 3", description: "" }
-    ],
-    tags: ["Comma-separated search keywords"],
-    colorTags: ["Comma-separated: neutral", "brown", "green", "blue", "pink", "purple"],
-    images: {
-      Comma-separated letter codes IN ORDER: "Comma-separated letter codes IN ORDER.png",
-      pos_Comma-separated. Leave blank for default position. e.g.: "Anvil code prefix e.g. ssc077Comma-separated. Leave blank for default position. e.g..png",
-      pos_center  or: "Anvil code prefix e.g. ssc077center  or.png",
-      pos_corner: "Anvil code prefix e.g. ssc077corner.png"
-    }
-  },
+
   {
     id: "ssc065",
     name: "Classic Wood Pillar",
@@ -1829,55 +1803,6 @@ const MODELS = [
     }
   },
   {
-    id: "ssc095",
-    name: "Ceramic Pot",
-    collection: "ssc",
-    number: "095",
-    category: "Decorative Sculptures",
-    room: ["Outdoor", "Misc", "Living", "Garage"],
-    description: "A round ceramic pot filled with dirt",
-    baseItem: "Dark Oak Stairs",
-    anvilCode: "ssc095",
-    variants: [
-      { code: "a", name: "Copper", color: "#C87348" },
-      { code: "b", name: "Light Gray", color: "#D8D3C9" },
-      { code: "c", name: "Charcoal", color: "#2E2D2E" },
-      { code: "d", name: "Peach", color: "#D8BC8B" },
-      { code: "e", name: "Medium Gray", color: "#748876" },
-      { code: "f", name: "Gray", color: "#91A9BA" },
-      { code: "g", name: "Gray", color: "#9A8BAC" },
-      { code: "h", name: "Dusty Rose", color: "#BB8894" },
-      { code: "i", name: "Mauve", color: "#AB8677" },
-      { code: "j", name: "Tan", color: "#B9AC92" },
-      { code: "k", name: "Brown", color: "#8A6D4F" }
-    ],
-    positions: [
-      { code: "back", name: "Back", description: "Appears at back of block" },
-      { code: "corner", name: "Corner", description: "Corner of block" },
-      { code: "raisedback", name: "Raised Back", description: "Raises 0.5 above block and appears behind item frame" },
-      { code: "raisedforward", name: "Raised Forward", description: "Raises 0.5 above block and appears infront of item frame" }
-    ],
-    tags: ["pot", "ceramic", "planter", "garden", "plant", "decorative", "outdoor", "indoor", "simple", "minimal", "botanical", "colorful"],
-    colorTags: ["neutral", "brown"],
-    images: {
-      a: "a.png",
-      b: "b.png",
-      c: "c.png",
-      d: "d.png",
-      e: "e.png",
-      f: "f.png",
-      g: "g.png",
-      h: "h.png",
-      i: "i.png",
-      j: "j.png",
-      k: "k.png",
-      pos_back: "ssc095back.png",
-      pos_corner: "ssc095corner.png",
-      pos_raisedback: "ssc095raisedback.png",
-      pos_raisedforward: "ssc095raisedforward.png"
-    }
-  },
-  {
     id: "ssc096",
     name: "Classic Support Beam 2",
     collection: "ssc",
@@ -1959,6 +1884,7 @@ const MODELS = [
       pos_center: "ssc098center.png",
       pos_right: "ssc098right.png"
     }
+  }
 ];
 
 // Filter options shown in the catalog
