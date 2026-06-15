@@ -6801,7 +6801,11 @@ const FILTER_OPTIONS = {
     { value: "plants",  label: "Plants" },
     { value: "potted plants",    label: "Potted Plants" },
     { value: "rocks",  label: "Rocks" },
-    { value: "outdoor",  label: "Outdoor" }
+    { value: "arches",  label: "Arches" }
+    { value: "windows",  label: "Windows" }
+    { value: "doors",  label: "Doors" }
+    { value: "outdoor furniture",  label: "Outdoor Furniture" }
+    { value: "outdoor decorations",  label: "Outdoor Decorations" }
   ],
   room: [
     { value: "living",   label: "Living Room" },
