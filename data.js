@@ -4396,35 +4396,6 @@ const MODELS = [
       pos_default: "ssc077.png"
     }
   },
-
-  {
-    id: "Unique model ID e.g. ssc077",
-    name: "Display name",
-    collection: "Collection code e.g. ssc",
-    number: "3-digit model number",
-    category: "seating / decor / utility / outdoor",
-    room: ["Comma-separated: living", "bedroom", "outdoor", "garden", "garage", "hallway"],
-    description: "One or two sentences",
-    baseItem: "Minecraft item name",
-    anvilCode: "Anvil code prefix e.g. ssc077",
-    variants: [
-      { code: "Comma-separated letter codes IN ORDER", name: "Comma-separated names IN SAME ORDER as codes", color: "#Comma-separated hex colors IN SAME ORDER as codes" }
-    ],
-    positions: [
-      { code: "Comma-separated. Leave blank for default position. e.g.", name: "Comma-separated position display names IN SAME ORDER", description: "Comma-separated descriptions IN SAME ORDER" },
-      { code: "center  or", name: "Position 2", description: "" },
-      { code: "corner", name: "Position 3", description: "" }
-    ],
-    tags: ["Comma-separated search keywords"],
-    colorTags: ["Comma-separated: neutral", "brown", "green", "blue", "pink", "purple"],
-    images: {
-      Comma-separated letter codes IN ORDER: "Comma-separated letter codes IN ORDER.png",
-      pos_Comma-separated. Leave blank for default position. e.g.: "Anvil code prefix e.g. ssc077Comma-separated. Leave blank for default position. e.g..png",
-      pos_center  or: "Anvil code prefix e.g. ssc077center  or.png",
-      pos_corner: "Anvil code prefix e.g. ssc077corner.png"
-    }
-  },
-
   {
     id: "ssc031",
     name: "Short Coastal Single Narrow Window",
@@ -6852,3 +6823,4 @@ const FILTER_OPTIONS = {
 
   ],
 }
+];
