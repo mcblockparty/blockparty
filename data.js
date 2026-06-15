@@ -1810,36 +1810,8 @@ const MODELS = [
       pos_center: "ssc098center.png",
       pos_right: "ssc098right.png"
     }
-  }
-];
-
-// Filter options shown in the catalog
-const FILTER_OPTIONS = {
-  category: [
-    { value: "plants",  label: "Plants" },
-    { value: "potted plants",    label: "Potted Plants" },
-    { value: "rocks",  label: "Rocks" },
-    { value: "outdoor",  label: "Outdoor" }
-  ],
-  room: [
-    { value: "living",   label: "Living Room" },
-    { value: "bedroom",  label: "Bedroom" },
-    { value: "outdoor",  label: "Outdoor" },
-    { value: "garden",   label: "Garden" },
-    { value: "garage",   label: "Garage" },
-    { value: "hallway",  label: "Hallway" }
-  ],
-  color: [
-    { value: "black",  label: "Black" },
-    { value: "brown",    label: "Brown / Wood" },
-    { value: "green",    label: "Green" },
-    { value: "blue",     label: "Blue" },
-    { value: "pink",     label: "Pink / Mauve" },
-    { value: "purple",   label: "Purple" },
-    { value: "lime",  label: "Lime" }
-
-  ],
-}
+  },
+  {
 // Model: ssc031
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -1956,7 +1928,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc032
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -2073,7 +2045,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc033
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -2190,7 +2162,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc034
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -2307,7 +2279,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc035
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -2424,7 +2396,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc036
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -2541,7 +2513,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc037
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -2658,7 +2630,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc038
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -2775,7 +2747,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc039
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -2892,7 +2864,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc040
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3009,7 +2981,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc041
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3126,7 +3098,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc042
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3243,7 +3215,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc043
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3360,7 +3332,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc044
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3477,7 +3449,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc045
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3594,7 +3566,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc046
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3711,7 +3683,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc047
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3782,7 +3754,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc048
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3833,7 +3805,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc049
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3884,7 +3856,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc050
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3927,7 +3899,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc051
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -3972,7 +3944,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc052
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4019,7 +3991,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc053
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4094,7 +4066,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc054
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4139,7 +4111,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc055
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4184,7 +4156,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc056
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4223,7 +4195,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc057
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4270,7 +4242,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc058
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4313,7 +4285,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc059
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4354,7 +4326,7 @@ const FILTER_OPTIONS = {
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc060
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4388,12 +4360,12 @@ const FILTER_OPTIONS = {
   },
 
 
-============================================================
+//============================================================
   CLEAN COPY-PASTE BLOCK
   Copy everything between the arrows and paste into
   the MODELS array in data.js. Add a comma after the
   last existing entry before pasting!
-============================================================
+//============================================================
 // ↓↓↓ START COPYING FROM HERE ↓↓↓
 
   {
@@ -6849,4 +6821,35 @@ const FILTER_OPTIONS = {
       pos_corner: "ssc060corner.png",
       pos_raisedback: "ssc060raisedback.png",
       pos_raisedforward: "ssc060raisedforward.png"
-    },
+    }
+  },
+
+];
+
+// Filter options shown in the catalog
+const FILTER_OPTIONS = {
+  category: [
+    { value: "plants",  label: "Plants" },
+    { value: "potted plants",    label: "Potted Plants" },
+    { value: "rocks",  label: "Rocks" },
+    { value: "outdoor",  label: "Outdoor" }
+  ],
+  room: [
+    { value: "living",   label: "Living Room" },
+    { value: "bedroom",  label: "Bedroom" },
+    { value: "outdoor",  label: "Outdoor" },
+    { value: "garden",   label: "Garden" },
+    { value: "garage",   label: "Garage" },
+    { value: "hallway",  label: "Hallway" }
+  ],
+  color: [
+    { value: "black",  label: "Black" },
+    { value: "brown",    label: "Brown / Wood" },
+    { value: "green",    label: "Green" },
+    { value: "blue",     label: "Blue" },
+    { value: "pink",     label: "Pink / Mauve" },
+    { value: "purple",   label: "Purple" },
+    { value: "lime",  label: "Lime" }
+
+  ],
+}
