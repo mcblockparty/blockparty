@@ -6766,7 +6766,7 @@ const MODELS = [
     }
   },
 
-  {
+{
     id: "ssc060",
     name: "Garden Green Fern",
     collection: "ssc",
@@ -6792,8 +6792,7 @@ const MODELS = [
       pos_raisedback: "ssc060raisedback.png",
       pos_raisedforward: "ssc060raisedforward.png"
     }
-  },
-
+  }
 ];
 
 // Filter options shown in the catalog
@@ -6820,7 +6819,5 @@ const FILTER_OPTIONS = {
     { value: "pink",     label: "Pink / Mauve" },
     { value: "purple",   label: "Purple" },
     { value: "lime",  label: "Lime" }
-
-  ],
-}
-];
+  ]
+};
