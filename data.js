@@ -1811,7 +1811,6 @@ const MODELS = [
       pos_right: "ssc098right.png"
     }
   },
-  {
 // Model: ssc031
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -4360,12 +4359,12 @@ const MODELS = [
   },
 
 
-//============================================================
-  CLEAN COPY-PASTE BLOCK
-  Copy everything between the arrows and paste into
-  the MODELS array in data.js. Add a comma after the
-  last existing entry before pasting!
-//============================================================
+// ============================================================
+  // CLEAN COPY-PASTE BLOCK
+  // Copy everything between the arrows and paste into
+  // the MODELS array in data.js. Add a comma after the
+  // last existing entry before pasting!
+// ============================================================
 // ↓↓↓ START COPYING FROM HERE ↓↓↓
 
   {
