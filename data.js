@@ -111,10 +111,10 @@ const MODELS = [
      ],
     positions: [
       { code: "", name: "Default", description: "Standard Block Placement" },
-      { code: "", name: "Back", description: "Placed Back on Block" },
-      { code: "", name: "Corner", description: "Placed Corner on Block" },
-      { code: "", name: "Raised Back", description: "Raises 0.5 above block, and spawns behind item frame" },
-      { code: "", name: "Raised Forward", description: "Raises 0.5 above block and spawns behind item frame" }
+      { code: "back", name: "Back", description: "Placed Back on Block" },
+      { code: "corner", name: "Corner", description: "Placed Corner on Block" },
+      { code: "raisedback", name: "Raised Back", description: "Raises 0.5 above block, and spawns behind item frame" },
+      { code: "raisedforward", name: "Raised Forward", description: "Raises 0.5 above block and spawns behind item frame" }
     ],
     tags: ["rock", "stone", "pebble", "garden"],
     colorTags: ["black", "brown", "grey"],
@@ -142,6 +142,7 @@ const MODELS = [
       { code: "a", name: "White", color: "#D2D1D0" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default Position" },
       { code: "back", name: "Back", description: "Back of block" },
       { code: "innercorner", name: "Inner Corner", description: "Fits into an inner corner" },
       { code: "outercorner", name: "Outer Corner", description: "Fits into an outer corner" }
@@ -180,6 +181,7 @@ const MODELS = [
       { code: "l", name: "Charcoal", color: "#2D2C2C" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default placement" },
       { code: "back", name: "Back", description: "Back of block" },
       { code: "corner", name: "Corner", description: "Corner of block" }
     ],
@@ -199,7 +201,8 @@ const MODELS = [
       k: "k.png",
       l: "l.png",
       pos_back: "ssc066back.png",
-      pos_corner: "ssc066corner.png"
+      pos_corner: "ssc066corner.png",
+      pos_default: "ssc066.png"
     }
   },
   {
@@ -227,6 +230,7 @@ const MODELS = [
       { code: "l", name: "Charcoal", color: "#2C2C2C" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "top", name: "Top", description: "Top of block" }
     ],
     tags: ["spandrel", "brick", "stone", "colonial", "decorative", "trim", "architectural", "porch", "bracket", "ornamental", "classic", "exterior"],
@@ -244,6 +248,7 @@ const MODELS = [
       j: "j.png",
       k: "k.png",
       l: "l.png",
+      pos_default: "ssc067.png",
       pos_top: "ssc067top.png"
     }
   },
@@ -317,7 +322,8 @@ const MODELS = [
       { code: "l", name: "Charcoal", color: "#2A2A2A" }
     ],
     positions: [
-      { code: "right", name: "Right", description: "Right side of block" }
+      { code: "right", name: "Right", description: "Right side of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["spandrel", "brick", "stone", "colonial", "decorative", "trim", "architectural", "porch", "bracket", "ornamental", "classic", "exterior", "arch"],
     colorTags: ["neutral", "brown"],
@@ -334,7 +340,8 @@ const MODELS = [
       j: "j.png",
       k: "k.png",
       l: "l.png",
-      pos_right: "ssc069right.png"
+      pos_right: "ssc069right.png",
+      pos_default: "ssc069.png"
     }
   },
   {
@@ -375,6 +382,7 @@ const MODELS = [
     ],
     positions: [
       { code: "center", name: "Center", description: "Center of block" },
+      { code: "", name: "Default", description: "Default position" },
       { code: "top", name: "Top", description: "Top of block" },
       { code: "topcenter", name: "Top Center", description: "Center of top of block" }
     ],
@@ -405,6 +413,7 @@ const MODELS = [
       v: "v.png",
       w: "w.png",
       x: "x.png",
+      pos_default: "ssc070.png",
       pos_center: "ssc070center.png",
       pos_top: "ssc070top.png",
       pos_topcenter: "ssc070topcenter.png"
@@ -448,6 +457,7 @@ const MODELS = [
       { code: "y", name: "Mocha", color: "#712F36" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "center", name: "Center", description: "Center of block" },
       { code: "top", name: "Top", description: "Top of block" },
       { code: "topcenter", name: "Top Center", description: "Center of top of block" }
@@ -480,6 +490,7 @@ const MODELS = [
       w: "w.png",
       x: "x.png",
       y: "y.png",
+      pos_default: "ssc071.png",
       pos_center: "ssc071center.png",
       pos_top: "ssc071top.png",
       pos_topcenter: "ssc071topcenter.png"
@@ -568,10 +579,10 @@ const MODELS = [
     ],
     positions: [
       { code: "back", name: "Back", description: "Back of block" },
-      { code: "cornercenter", name: "Corner Center", description: "Corner of block" },
-      { code: "front", name: "Front", description: "Center of block" },
-      { code: "innercorner", name: "Inner Corner", description: "Placed on front of block" },
-      { code: "", name: "Position 5", description: "Fits into an inner corner" }
+      { code: "cornercenter", name: "Corner Center", description: "Inside corner in center of block" },
+      { code: "front", name: "Front", description: "Placed on front of block" },
+      { code: "innercorner", name: "Inner Corner", description: "Fits into an inner corner" },
+      { code: "", name: "Default", description: "Default center placement" }
     ],
     tags: ["fence", "lattice", "coastal", "outdoor", "garden", "yard", "barrier", "decorative", "wood", "exterior", "panel"],
     colorTags: ["neutral", "brown"],
@@ -657,7 +668,8 @@ const MODELS = [
     ],
     positions: [
       { code: "back", name: "Back", description: "Back of block" },
-      { code: "front", name: "Front", description: "Placed on front of block" }
+      { code: "front", name: "Front", description: "Placed on front of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["fence", "lattice", "coastal", "outdoor", "garden", "yard", "barrier", "decorative", "wood", "exterior", "panel", "gate"],
     colorTags: ["neutral", "brown"],
@@ -693,7 +705,8 @@ const MODELS = [
       ac: "ac.png",
       ad: "ad.png",
       pos_back: "ssc074back.png",
-      pos_front: "ssc074front.png"
+      pos_front: "ssc074front.png",
+      pos_default: "ssc074.png"
     }
   },
   {
@@ -739,6 +752,7 @@ const MODELS = [
       { code: "ad", name: "Variant 30", color: "#888888" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "corner", name: "Corner", description: "Corner of block" },
       { code: "raisedback", name: "Raised Back", description: "Raises 0.5 above block and appears behind item frame" },
       { code: "raisedforward", name: "Raised Forward", description: "Raises 0.5 above block and appears infront of item frame" }
@@ -776,6 +790,7 @@ const MODELS = [
       ab: "ab.png",
       ac: "ac.png",
       ad: "ad.png",
+      pos_default: "ssc075.png",
       pos_corner: "ssc075corner.png",
       pos_raisedback: "ssc075raisedback.png",
       pos_raisedforward: "ssc075raisedforward.png"
@@ -798,7 +813,8 @@ const MODELS = [
       { code: "d", name: "Eggplant", color: "#572651" }
     ],
     positions: [
-      { code: "corner", name: "Corner", description: "Corner of block" }
+      { code: "corner", name: "Corner", description: "Corner of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["fern", "plant", "sphere", "ball", "topiary", "hanging", "nature", "garden", "green", "foliage", "bush", "botanical", "outdoor", "patio", "pot", "planter", "coastal"],
     colorTags: ["neutral", "brown"],
@@ -807,7 +823,8 @@ const MODELS = [
       b: "b.png",
       c: "c.png",
       d: "d.png",
-      pos_corner: "ssc076corner.png"
+      pos_corner: "ssc076corner.png",
+      pos_default: "ssc076.png"
     }
   },
   {
@@ -836,7 +853,8 @@ const MODELS = [
       { code: "m", name: "Dark Gray", color: "#434344" }
     ],
     positions: [
-      { code: "center", name: "Center", description: "Center of block" }
+      { code: "center", name: "Center", description: "Center of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["hammock", "stand", "floor", "fabric", "rope", "cloth", "swing", "relax", "lounge", "coastal", "boho", "outdoor", "bedroom", "patio", "beach", "hanging", "woven", "colorful"],
     colorTags: ["neutral", "brown"],
@@ -854,7 +872,8 @@ const MODELS = [
       k: "k.png",
       l: "l.png",
       m: "m.png",
-      pos_center: "ssc077center.png"
+      pos_center: "ssc077center.png",
+      pos_center: "ssc077.png"
     }
   },
   {
@@ -942,6 +961,7 @@ const MODELS = [
       { code: "i", name: "Oak Brown", color: "#997148" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "center", name: "Center", description: "Center of block" }
     ],
     tags: ["bench", "seat", "wood", "wooden", "outdoor", "garden", "patio", "seating", "furniture", "park", "classic", "exterior"],
@@ -956,7 +976,8 @@ const MODELS = [
       g: "g.png",
       h: "h.png",
       i: "i.png",
-      pos_center: "ssc079center.png"
+      pos_center: "ssc079center.png",
+      pos_center: "ssc079.png"
     }
   },
   {
@@ -1020,6 +1041,7 @@ const MODELS = [
       { code: "k", name: "Brown", color: "#8B6D4D" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "corner", name: "Corner", description: "Corner of block" },
       { code: "raisedback", name: "Raised Back", description: "Raises 0.5 above block and appears behind item frame" },
       { code: "raisedforward", name: "Raised Forward", description: "Raises 0.5 above block and appears infront of item frame" }
@@ -1038,6 +1060,7 @@ const MODELS = [
       i: "i.png",
       j: "j.png",
       k: "k.png",
+      pos_default: "ssc081.png",
       pos_corner: "ssc081corner.png",
       pos_raisedback: "ssc081raisedback.png",
       pos_raisedforward: "ssc081raisedforward.png"
@@ -1064,6 +1087,7 @@ const MODELS = [
       { code: "h", name: "Mauve", color: "#B67777" }
     ],
     positions: [
+      { code: "", name: "Top", description: "Default position" },
       { code: "top", name: "Top", description: "Top of block" }
     ],
     tags: ["electricity", "meter", "electrical", "utility", "wall", "suburban", "realistic", "exterior", "gauge", "box", "panel", "moden", "functional", "detail", "house"],
@@ -1077,7 +1101,8 @@ const MODELS = [
       f: "f.png",
       g: "g.png",
       h: "h.png",
-      pos_top: "ssc082top.png"
+      pos_top: "ssc082top.png",
+      pos_default: "ssc082.png"
     }
   },
   {
@@ -1098,7 +1123,8 @@ const MODELS = [
       { code: "e", name: "Moss", color: "#737247" }
     ],
     positions: [
-      { code: "top", name: "Top", description: "Top of block" }
+      { code: "top", name: "Top", description: "Top of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["pipe", "wall", "industrial", "plumbing", "metal", "exterior", "utility", "functional", "detail", "modern", "urban", "realistic"],
     colorTags: ["neutral", "brown"],
@@ -1108,7 +1134,8 @@ const MODELS = [
       c: "c.png",
       d: "d.png",
       e: "e.png",
-      pos_top: "ssc083top.png"
+      pos_top: "ssc083top.png",
+      pos_default: "ssc083.png"
     }
   },
   {
@@ -1271,7 +1298,8 @@ const MODELS = [
       { code: "y", name: "Blush", color: "#EBC4B3" }
     ],
     positions: [
-      { code: "top", name: "Top", description: "Top of block" }
+      { code: "top", name: "Top", description: "Top of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["window box", "planter", "coastal", "small", "exterior", "flowers", "garden", "wall", "hanging", "outdoor", "floral", "decorative"],
     colorTags: ["neutral", "brown"],
@@ -1301,7 +1329,8 @@ const MODELS = [
       w: "w.png",
       x: "x.png",
       y: "y.png",
-      pos_top: "ssc086top.png"
+      pos_top: "ssc086top.png",
+      pos_default: "ssc086.png"
     }
   },
   {
@@ -1386,7 +1415,8 @@ const MODELS = [
     positions: [
       { code: "corner", name: "Corner", description: "Corner of block" },
       { code: "raisedback", name: "Raised Back", description: "Raises 0.5 above block and appears behind item frame" },
-      { code: "raisedforward", name: "Raised Forward", description: "Raises 0.5 above block and appears infront of item frame" }
+      { code: "raisedforward", name: "Raised Forward", description: "Raises 0.5 above block and appears infront of item frame" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["medinilla", "flowers", "floral", "plant", "pink", "tropical", "botanical", "decorative", "indoor", "potted", "exotic", "flower"],
     colorTags: ["neutral", "brown"],
@@ -1399,6 +1429,7 @@ const MODELS = [
       f: "f.png",
       g: "g.png",
       h: "h.png",
+      pos_default: "ssc088.png",
       pos_corner: "ssc088corner.png",
       pos_raisedback: "ssc088raisedback.png",
       pos_raisedforward: "ssc088raisedforward.png"
@@ -1457,7 +1488,8 @@ const MODELS = [
       { code: "an", name: "Variant 40", color: "#888888" }
     ],
     positions: [
-      { code: "center", name: "Center", description: "Center of block" }
+      { code: "center", name: "Center", description: "Center of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["bench", "seat", "bedroom", "soft", "upholstered", "fabric", "indoor", "furniture", "foot of bed", "seating", "cozy", "padded"],
     colorTags: ["neutral", "brown"],
@@ -1502,7 +1534,8 @@ const MODELS = [
       al: "al.png",
       am: "am.png",
       an: "an.png",
-      pos_center: "ssc089center.png"
+      pos_center: "ssc089center.png",
+      pos_default: "ssc089.png"
     }
   },
   {
@@ -1528,6 +1561,7 @@ const MODELS = [
     ],
     positions: [
       { code: "back", name: "Back", description: "Back of block" },
+      { code: "", name: "Default", description: "Default position" },
       { code: "front", name: "Front", description: "Placed on front of block" },
       { code: "innercorner", name: "Inner Corner", description: "Fits into an inner corner" },
       { code: "outercorner", name: "Outer Corner", description: "Fits into an outer corner" }
@@ -1546,6 +1580,7 @@ const MODELS = [
       h: "h.png",
       i: "i.png",
       pos_back: "ssc090back.png",
+      pos_default: "ssc090.png",
       pos_front: "ssc090front.png",
       pos_innercorner: "ssc090innercorner.png",
       pos_outercorner: "ssc090outercorner.png"
@@ -1565,13 +1600,15 @@ const MODELS = [
       { code: "a", name: "Russet", color: "#754411" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "front", name: "Front", description: "Placed on front of block" }
     ],
     tags: ["beam", "support", "structural", "classic", "wood", "wooden", "architectural", "exterior", "porch", "post", "traditional", "column"],
     colorTags: ["neutral", "brown"],
     images: {
       a: "a.png",
-      pos_front: "ssc091front.png"
+      pos_front: "ssc091front.png",
+      pos_default: "ssc091.png"
     }
   },
   {
@@ -1596,7 +1633,8 @@ const MODELS = [
       { code: "i", name: "Charcoal", color: "#313031" }
     ],
     positions: [
-      { code: "back", name: "Back", description: "Appears at back of block" }
+      { code: "back", name: "Back", description: "Appears at back of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["chimney", "brick", "classic", "exterior", "roof", "fireplace", "traditional", "architectural", "house", "stack", "masonry"],
     colorTags: ["neutral", "brown"],
@@ -1610,6 +1648,7 @@ const MODELS = [
       g: "g.png",
       h: "h.png",
       i: "i.png",
+      pos_default: "ssc092.png",
       pos_back: "ssc092back.png"
     }
   },
@@ -1660,7 +1699,8 @@ const MODELS = [
       { code: "k", name: "Dark Gray", color: "#504E47" }
     ],
     positions: [
-      { code: "back", name: "Back", description: "Appears at back of block" }
+      { code: "back", name: "Back", description: "Appears at back of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["chimney", "brick", "classic", "coastal", "exterior", "roof", "fireplace", "architectural", "house", "stack", "masonry", "beach", "traditional"],
     colorTags: ["neutral", "brown"],
@@ -1676,7 +1716,8 @@ const MODELS = [
       i: "i.png",
       j: "j.png",
       k: "k.png",
-      pos_back: "ssc094back.png"
+      pos_back: "ssc094back.png",
+      pos_default: "ssc094.png"
     }
   },
   {
@@ -1703,6 +1744,7 @@ const MODELS = [
       { code: "k", name: "Brown", color: "#8A6D4F" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "back", name: "Back", description: "Appears at back of block" },
       { code: "corner", name: "Corner", description: "Corner of block" },
       { code: "raisedback", name: "Raised Back", description: "Raises 0.5 above block and appears behind item frame" },
@@ -1722,6 +1764,7 @@ const MODELS = [
       i: "i.png",
       j: "j.png",
       k: "k.png",
+      pos_default: "ssc095.png",
       pos_back: "ssc095back.png",
       pos_corner: "ssc095corner.png",
       pos_raisedback: "ssc095raisedback.png",
@@ -1744,12 +1787,14 @@ const MODELS = [
     positions: [
       { code: "ceiling", name: "Ceiling", description: "Placed on ceiling" },
       { code: "ceilingcenter", name: "Ceiling Center", description: "Placed on center of ceiling" },
-      { code: "left", name: "Left", description: "Left side of block" }
+      { code: "left", name: "Left", description: "Left side of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["beam", "support", "structural", "classic", "wood", "wooden", "architectural", "exterior", "porch", "post", "traditional", "column"],
     colorTags: ["neutral", "brown"],
     images: {
       a: "a.png",
+      pos_ceiling: "ssc096.png",
       pos_ceiling: "ssc096ceiling.png",
       pos_ceilingcenter: "ssc096ceilingcenter.png",
       pos_left: "ssc096left.png"
@@ -1769,6 +1814,7 @@ const MODELS = [
       { code: "a", name: "Russet", color: "#754411" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "ceiling", name: "Ceiling", description: "Placed on ceiling" },
       { code: "ceilingcenter", name: "Ceiling Center", description: "Placed on center of ceiling" }
     ],
@@ -1777,7 +1823,8 @@ const MODELS = [
     images: {
       a: "a.png",
       pos_ceiling: "ssc097ceiling.png",
-      pos_ceilingcenter: "ssc097ceilingcenter.png"
+      pos_ceilingcenter: "ssc097ceilingcenter.png",
+      pos_default: "ssc097.png"
     }
   },
   {
@@ -1798,12 +1845,14 @@ const MODELS = [
       { code: "ceilingcenter", name: "Ceiling Center", description: "Placed on center of ceiling" },
       { code: "ceilingcorner", name: "Ceiling Corner", description: "Placed on corner of ceiling" },
       { code: "center", name: "Center", description: "Center of block" },
-      { code: "right", name: "Right", description: "Right side of block" }
+      { code: "right", name: "Right", description: "Right side of block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["beam", "support", "structural", "classic", "wood", "wooden", "architectural", "exterior", "porch", "post", "traditional", "column"],
     colorTags: ["neutral", "brown"],
     images: {
       a: "a.png",
+      pos_default: "ssc098.png",
       pos_ceilingback: "ssc098ceilingback.png",
       pos_ceilingcenter: "ssc098ceilingcenter.png",
       pos_ceilingcorner: "ssc098ceilingcorner.png",
