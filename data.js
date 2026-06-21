@@ -3771,7 +3771,9 @@ const MODELS = [
       { code: "v", name: "Charcoal", color: "#2A2F3B" }
     ],
     positions: [
-      { code: "middle", name: "Middle", description: "Item is in-between two blocks" }
+      { code: "middle", name: "Middle", description: "Item is in-between two blocks" },
+      { code: "", name: "Default", description: "Default position" }
+
     ],
     tags: ["chair", "armchair", "seating", "furniture", "outdoor", "patio", "wooden-frame", "cushioned"],
     colorTags: ["neutral", "brown"],
@@ -3798,7 +3800,8 @@ const MODELS = [
       t: "t.png",
       u: "u.png",
       v: "v.png",
-      pos_middle: "ssc047middle.png"
+      pos_middle: "ssc047middle.png",
+      pos_default: "ssc047.png"
     }
   },
 
@@ -3832,7 +3835,8 @@ const MODELS = [
       { code: "l", name: "Gray", color: "#A3A29C" }
     ],
     positions: [
-      { code: "corner", name: "Corner", description: "Item is on the corner of the block" }
+      { code: "corner", name: "Corner", description: "Item is on the corner of the block" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["table", "side-table", "bistro-table", "umbrella", "furniture", "outdoor", "patio", "decorative"],
     colorTags: ["neutral", "brown"],
@@ -3849,7 +3853,8 @@ const MODELS = [
       j: "j.png",
       k: "k.png",
       l: "l.png",
-      pos_corner: "ssc048corner.png"
+      pos_corner: "ssc048corner.png",
+      pos_default: "ssc048.png"
     }
   },
 
@@ -3882,6 +3887,8 @@ const MODELS = [
     ],
     positions: [
       { code: "corner", name: "Corner", description: "Item is on the corner of the block" },
+      { code: "", name: "Default", description: "Default position" },
+
       { code: "raisedback", name: "Raised Back", description: "Item is raised half a block off the ground and in front of item frame" },
       { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" }
     ],
@@ -3899,6 +3906,7 @@ const MODELS = [
       I: "I.png",
       j: "j.png",
       pos_corner: "ssc049corner.png",
+      pos_default: "ssc049.png",
       pos_raisedback: "ssc049raisedback.png",
       pos_raisedforward: "ssc049raisedforward.png"
     }
@@ -3929,6 +3937,7 @@ const MODELS = [
       { code: "g", name: "Dark Brown", color: "#503018" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "back", name: "Back", description: "Item appears in the back of the block" },
       { code: "corner", name: "Corner", description: "Item appears in the corner of the block" }
     ],
@@ -3943,6 +3952,7 @@ const MODELS = [
       f: "f.png",
       g: "g.png",
       pos_back: "ssc050back.png",
+      pos_default: "ssc050.png",
       pos_corner: "ssc050corner.png"
     }
   },
@@ -3974,7 +3984,9 @@ const MODELS = [
       { code: "i", name: "Dark Gray", color: "#465449" }
     ],
     positions: [
-      { code: "corner", name: "Corner", description: "Item appears in the corner of the block" }
+      { code: "corner", name: "Corner", description: "Item appears in the corner of the block" },
+      { code: "", name: "Default", description: "Default position" }
+
     ],
     tags: ["birdbath", "pedestal", "garden", "outdoor", "decorative", "prop", "stone"],
     colorTags: ["neutral", "brown"],
@@ -3988,7 +4000,8 @@ const MODELS = [
       g: "g.png",
       h: "h.png",
       i: "i.png",
-      pos_corner: "ssc051corner.png"
+      pos_corner: "ssc051corner.png",
+      pos_default: "ssc051.png"
     }
   },
 
@@ -4018,6 +4031,7 @@ const MODELS = [
     ],
     positions: [
       { code: "back", name: "Back", description: "Item appears in the back of the block" },
+      { code: "", name: "Default", description: "Default position" },
       { code: "corner", name: "Corner", description: "Item appears in the corner of the block" },
       { code: "raisedback", name: "Raised Back", description: "Item rises half a block above the ground and in front of item frame" },
       { code: "raisedforward", name: "Raised Forward", description: "" }
@@ -4033,6 +4047,7 @@ const MODELS = [
       f: "f.png",
       g: "g.png",
       pos_back: "ssc052back.png",
+      pos_default: "ssc052.png",
       pos_corner: "ssc052corner.png",
       pos_raisedback: "ssc052raisedback.png",
       pos_raisedforward: "ssc052raisedforward.png"
@@ -4081,7 +4096,8 @@ const MODELS = [
     positions: [
       { code: "corner", name: "Corner", description: "Item is on the corner of the block" },
       { code: "raisedback", name: "Raised Back", description: "Item is raised half a block off the ground and in front of item frame" },
-      { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" }
+      { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" },
+      { code: "", name: "Default", description: "Default position" }
     ],
     tags: ["cactus", "succulent", "potted-plant", "nature", "indoor", "outdoor", "decorative", "prop"],
     colorTags: ["neutral", "brown"],
@@ -4108,6 +4124,7 @@ const MODELS = [
       t: "t.png",
       u: "u.png",
       v: "v.png",
+      pos_default: "ssc053.png",
       pos_corner: "ssc053corner.png",
       pos_raisedback: "ssc053raisedback.png",
       pos_raisedforward: "ssc053raisedforward.png"
@@ -4141,7 +4158,8 @@ const MODELS = [
     ],
     positions: [
       { code: "raisedback", name: "Raised Back", description: "Item rises half a block above the ground and behind the item frame" },
-      { code: "raisedfront", name: "Raised Front", description: "Item rises half a block above the ground and appears in front of item frame" }
+      { code: "raisedfront", name: "Raised Front", description: "Item rises half a block above the ground and appears in front of item frame" },
+      { code: "", name: "Default", description: "Default position" },
     ],
     tags: ["cactus", "succulent", "potted-plant", "nature", "indoor", "outdoor", "decorative", "prop"],
     colorTags: ["neutral", "brown"],
@@ -4155,6 +4173,7 @@ const MODELS = [
       g: "g.png",
       h: "h.png",
       pos_raisedback: "ssc054raisedback.png",
+      pos_default: "ssc054.png",
       pos_raisedfront: "ssc054raisedfront.png"
     }
   },
@@ -4186,6 +4205,7 @@ const MODELS = [
       { code: "i", name: "Brown", color: "#73665A" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" }
       { code: "diagonal", name: "Diagonal", description: "Item is positioned diagonally on block" }
     ],
     tags: ["rock", "boulder", "nature", "outdoor", "ground-prop", "landscaping", "decorative"],
@@ -4201,6 +4221,7 @@ const MODELS = [
       h: "h.png",
       i: "i.png",
       pos_diagonal: "ssc055diagonal.png"
+      pos_default: "ssc055.png"
     }
   },
 
@@ -4227,6 +4248,7 @@ const MODELS = [
     ],
     positions: [
       { code: "corner", name: "Corner", description: "Item is on the corner of the block" },
+      { code: "", name: "Default", description: "Default position" },
       { code: "raisedback", name: "Raised Back", description: "Item is raised half a block off the ground and in front of item frame" },
       { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" }
     ],
@@ -4239,7 +4261,8 @@ const MODELS = [
       d: "d.png",
       pos_corner: "ssc056corner.png",
       pos_raisedback: "ssc056raisedback.png",
-      pos_raisedforward: "ssc056raisedforward.png"
+      pos_raisedforward: "ssc056raisedforward.png",
+      pos_default: "ssc056.png",
     }
   },
 
@@ -4272,6 +4295,7 @@ const MODELS = [
       { code: "corner", name: "Corner", description: "Item is on the corner of the block" },
       { code: "raisedback", name: "Raised Back", description: "Item is raised half a block off the ground and in front of item frame" },
       { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" }
+      { code: "", name: "Default", description: "Default position" },
     ],
     tags: ["flowers", "floral", "bush", "shrub", "plant", "nature", "outdoor", "garden", "decorative", "prop"],
     colorTags: ["neutral", "brown"],
@@ -4284,6 +4308,7 @@ const MODELS = [
       f: "f.png",
       g: "g.png",
       h: "h.png",
+      pos_default: "ssc057.png",
       pos_corner: "ssc057corner.png",
       pos_raisedback: "ssc057raisedback.png",
       pos_raisedforward: "ssc057raisedforward.png"
@@ -4313,6 +4338,7 @@ const MODELS = [
       { code: "e", name: "Charcoal", color: "#2B2B2A" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "back", name: "Back", description: "Item appears in the back of the block" },
       { code: "corner", name: "Corner", description: "Item appears in the corner of the block" },
       { code: "raisedback", name: "Raised Back", description: "Item rises half a block above the ground and in front of item frame" },
@@ -4327,6 +4353,7 @@ const MODELS = [
       d: "d.png",
       e: "e.png",
       pos_back: "ssc058back.png",
+      pos_default: "ssc058.png",
       pos_corner: "ssc058corner.png",
       pos_raisedback: "ssc058raisedback.png",
       pos_raisedforward: "ssc058raisedforward.png"
@@ -4359,6 +4386,7 @@ const MODELS = [
       { code: "corner", name: "Corner", description: "Item is on the corner of the block" },
       { code: "raisedback", name: "Raised Back", description: "Item is raised half a block off the ground and in front of item frame" },
       { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" }
+      { code: "", name: "Default", description: "Default position" },
     ],
     tags: ["rocks", "stones", "pebbles", "nature", "outdoor", "ground-prop", "landscaping", "decorative"],
     colorTags: ["neutral", "brown"],
@@ -4393,6 +4421,7 @@ const MODELS = [
       { code: "a", name: "Forest Green", color: "#477824" }
     ],
     positions: [
+      { code: "", name: "Default", description: "Default position" },
       { code: "corner", name: "Corner", description: "Item is on the corner of the block" },
       { code: "raisedback", name: "Raised Back", description: "Item is raised half a block off the ground and in front of item frame" },
       { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" }
@@ -4401,6 +4430,7 @@ const MODELS = [
     colorTags: ["neutral", "brown"],
     images: {
       a: "a.png",
+      pos_default: "ssc060.png",
       pos_corner: "ssc060corner.png",
       pos_raisedback: "ssc060raisedback.png",
       pos_raisedforward: "ssc060raisedforward.png"
