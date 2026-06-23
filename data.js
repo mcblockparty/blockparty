@@ -4205,7 +4205,7 @@ const MODELS = [
       { code: "i", name: "Brown", color: "#73665A" }
     ],
     positions: [
-      { code: "", name: "Default", description: "Default position" }
+      { code: "", name: "Default", description: "Default position" },
       { code: "diagonal", name: "Diagonal", description: "Item is positioned diagonally on block" }
     ],
     tags: ["rock", "boulder", "nature", "outdoor", "ground-prop", "landscaping", "decorative"],
@@ -4220,7 +4220,7 @@ const MODELS = [
       g: "g.png",
       h: "h.png",
       i: "i.png",
-      pos_diagonal: "ssc055diagonal.png"
+      pos_diagonal: "ssc055diagonal.png",
       pos_default: "ssc055.png"
     }
   },
@@ -4262,7 +4262,7 @@ const MODELS = [
       pos_corner: "ssc056corner.png",
       pos_raisedback: "ssc056raisedback.png",
       pos_raisedforward: "ssc056raisedforward.png",
-      pos_default: "ssc056.png",
+      pos_default: "ssc056.png"
     }
   },
 
@@ -4294,7 +4294,7 @@ const MODELS = [
     positions: [
       { code: "corner", name: "Corner", description: "Item is on the corner of the block" },
       { code: "raisedback", name: "Raised Back", description: "Item is raised half a block off the ground and in front of item frame" },
-      { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" }
+      { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" },
       { code: "", name: "Default", description: "Default position" },
     ],
     tags: ["flowers", "floral", "bush", "shrub", "plant", "nature", "outdoor", "garden", "decorative", "prop"],
@@ -4385,7 +4385,7 @@ const MODELS = [
     positions: [
       { code: "corner", name: "Corner", description: "Item is on the corner of the block" },
       { code: "raisedback", name: "Raised Back", description: "Item is raised half a block off the ground and in front of item frame" },
-      { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" }
+      { code: "raisedforward", name: "Raised Forward", description: "Item is raised half a block off the ground and behind item frame" },
       { code: "", name: "Default", description: "Default position" },
     ],
     tags: ["rocks", "stones", "pebbles", "nature", "outdoor", "ground-prop", "landscaping", "decorative"],
