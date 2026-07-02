@@ -7663,7 +7663,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc100
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -7764,7 +7764,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc101
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -7883,7 +7883,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc102
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -7946,7 +7946,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc103
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8029,7 +8029,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc104
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8070,7 +8070,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc105
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8155,7 +8155,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc106
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8274,7 +8274,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc107
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8321,7 +8321,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc108
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8372,7 +8372,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc109
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8419,7 +8419,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc110
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8456,13 +8456,13 @@ const MODELS = [
       d: "d.png",
       e: "e.png",
       f: "f.png",
-      g.h: "g.h.png",
-      ?7: "?7.png",
+      "g.h": "g.h.png",
+      "?7": "?7.png",
       pos_default: "ssc110.png"
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc111
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8505,7 +8505,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc112
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8548,7 +8548,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc113
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8595,7 +8595,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc114
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8636,7 +8636,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc115
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8675,7 +8675,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc116
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8718,7 +8718,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc117
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8793,7 +8793,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc118
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8868,7 +8868,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc119
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -8969,7 +8969,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc120
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9034,7 +9034,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc121
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9099,7 +9099,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc122
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9154,7 +9154,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc123
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9225,7 +9225,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc124
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9278,7 +9278,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc125
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9315,7 +9315,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc126
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9372,7 +9372,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc127
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9415,7 +9415,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc128
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9458,7 +9458,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc129
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9515,7 +9515,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc130
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9556,7 +9556,7 @@ const MODELS = [
     }
   },
 
-============================================================
+//============================================================
 // Model: ssc131
 // Paste this inside the MODELS = [ ... ] array in data.js
 // Add a comma after the previous entry before pasting!
@@ -9606,12 +9606,12 @@ const MODELS = [
   },
 
 
-============================================================
-  CLEAN COPY-PASTE BLOCK
-  Copy everything between the arrows and paste into
-  the MODELS array in data.js. Add a comma after the
-  last existing entry before pasting!
-============================================================
+//============================================================
+//  CLEAN COPY-PASTE BLOCK
+//  Copy everything between the arrows and paste into
+//  the MODELS array in data.js. Add a comma after the
+//  last existing entry before pasting!
+//============================================================
 // ↓↓↓ START COPYING FROM HERE ↓↓↓
 
   {
@@ -9641,34 +9641,6 @@ const MODELS = [
       c: "c.png",
       pos_center: "ssc077center.png",
       pos_default: "ssc077.png"
-    }
-  },
-
-  {
-    id: "Unique model ID e.g. ssc077",
-    name: "Display name",
-    collection: "Collection code e.g. ssc",
-    number: "3-digit model number",
-    category: "seating / decor / utility / outdoor",
-    room: ["Comma-separated: living", "bedroom", "outdoor", "garden", "garage", "hallway"],
-    description: "One or two sentences",
-    baseItem: "Minecraft item name",
-    anvilCode: "Anvil code prefix e.g. ssc077",
-    variants: [
-      { code: "Comma-separated letter codes IN ORDER", name: "Comma-separated names IN SAME ORDER as codes", color: "#Comma-separated hex colors IN SAME ORDER as codes" }
-    ],
-    positions: [
-      { code: "Comma-separated. Leave blank for default position. e.g.", name: "Comma-separated position display names IN SAME ORDER", description: "Comma-separated descriptions IN SAME ORDER" },
-      { code: "center  or", name: "Position 2", description: "" },
-      { code: "corner", name: "Position 3", description: "" }
-    ],
-    tags: ["Comma-separated search keywords"],
-    colorTags: ["Comma-separated: neutral", "brown", "green", "blue", "pink", "purple"],
-    images: {
-      Comma-separated letter codes IN ORDER: "Comma-separated letter codes IN ORDER.png",
-      pos_Comma-separated. Leave blank for default position. e.g.: "Anvil code prefix e.g. ssc077Comma-separated. Leave blank for default position. e.g..png",
-      pos_center  or: "Anvil code prefix e.g. ssc077center  or.png",
-      pos_corner: "Anvil code prefix e.g. ssc077corner.png"
     }
   },
 
@@ -10492,8 +10464,8 @@ const MODELS = [
       d: "d.png",
       e: "e.png",
       f: "f.png",
-      g.h: "g.h.png",
-      ?7: "?7.png",
+      "g.h": "g.h.png",
+      "?7": "?7.png",
       pos_default: "ssc110.png"
     }
   },
