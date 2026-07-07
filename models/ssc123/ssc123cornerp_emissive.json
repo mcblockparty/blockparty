@@ -1,0 +1,9 @@
+{
+  "parent": "item/ssc123cornerp",
+  "textures": {
+    "20": "minecraft:item/123/ssc123_p_!",
+    "particle": "minecraft:item/123/ssc123_p_!",
+    "emissive": "minecraft:item/123/ssc123_p_!"
+  },
+  "render_type": "emissive"
+}

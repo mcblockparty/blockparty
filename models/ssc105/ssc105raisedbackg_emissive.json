@@ -1,0 +1,9 @@
+{
+  "parent": "item/ssc105raisedbackg",
+  "textures": {
+    "0": "minecraft:item/105/ssc105_g_!",
+    "particle": "minecraft:item/105/ssc105_g_!",
+    "emissive": "minecraft:item/105/ssc105_g_!"
+  },
+  "render_type": "emissive"
+}

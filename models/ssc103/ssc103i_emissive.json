@@ -1,0 +1,9 @@
+{
+  "parent": "item/ssc103i",
+  "textures": {
+    "23": "minecraft:item/103/ssc103_i_!",
+    "particle": "minecraft:item/103/ssc103_i_!",
+    "emissive": "minecraft:item/103/ssc103_i_!"
+  },
+  "render_type": "emissive"
+}
