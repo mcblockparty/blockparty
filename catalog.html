@@ -108,6 +108,7 @@
 </footer>
 
 <script src="data.js"></script>
+<script src="colorFilter.js"></script>
 <script src="cart.js"></script>
 <script>
   // ---------- Filters ----------
@@ -168,19 +169,23 @@
   }
 
   function getFilteredModels() {
+    const searchColor = resolveColorFromQuery(searchQuery);
     return MODELS.filter(model => {
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        const match = model.name.toLowerCase().includes(q) ||
+        const textMatch = model.name.toLowerCase().includes(q) ||
           model.description.toLowerCase().includes(q) ||
           model.baseItem.toLowerCase().includes(q) ||
           model.anvilCode.toLowerCase().includes(q) ||
           model.tags.some(t => t.includes(q));
-        if (!match) return false;
+        // If the search term is a recognized color (e.g. "pink"), also match
+        // any model that has at least one variant tagged with that color.
+        const colorMatch = searchColor && model.variants.some(v => (v.colorTags || []).includes(searchColor));
+        if (!textMatch && !colorMatch) return false;
       }
       if (activeFilters.category.length && !activeFilters.category.includes(model.category)) return false;
       if (activeFilters.room.length && !activeFilters.room.some(r => model.room.includes(r))) return false;
-      if (activeFilters.color.length && !activeFilters.color.some(c => model.colorTags.includes(c))) return false;
+      if (activeFilters.color.length && !activeFilters.color.some(c => model.variants.some(v => (v.colorTags || []).includes(c)))) return false;
       return true;
     });
   }
@@ -191,27 +196,19 @@
     return `images/${model.id}/${file}`;
   }
 
-  // Pick the best variant to show — first one matching the active color filter, else first overall
+  // Colors currently in play, from either the sidebar filter or the search box
+  function getEffectiveColors() {
+    const colors = [...activeFilters.color];
+    const searchColor = resolveColorFromQuery(searchQuery);
+    if (searchColor && !colors.includes(searchColor)) colors.push(searchColor);
+    return colors;
+  }
+
+  // Pick the variant to show as the model's cover image: first a variant
+  // matching an active color (filter or search), else the model's manually
+  // set defaultVariant, else the first variant.
   function getBestVariant(model) {
-    if (activeFilters.color.length) {
-      // Map color filter values to variant name keywords
-      const colorKeywords = {
-        blue:    ['blue', 'navy', 'ocean', 'cobalt', 'sky', 'teal', 'azure'],
-        green:   ['green', 'sage', 'forest', 'mint', 'olive', 'emerald'],
-        neutral: ['white', 'cream', 'gray', 'grey', 'silver', 'warm', 'cool', 'stone', 'taupe', 'natural'],
-        brown:   ['brown', 'tan', 'oak', 'walnut', 'espresso', 'wood', 'cedar', 'mahogany'],
-        pink:    ['pink', 'blush', 'rose', 'mauve', 'coral'],
-        purple:  ['purple', 'violet', 'lavender', 'plum'],
-      };
-      for (const colorFilter of activeFilters.color) {
-        const keywords = colorKeywords[colorFilter] || [colorFilter];
-        const match = model.variants.find(v =>
-          keywords.some(kw => v.name.toLowerCase().includes(kw))
-        );
-        if (match) return match;
-      }
-    }
-    return model.variants[0];
+    return getDefaultVariant(model, getEffectiveColors());
   }
 
   function renderGrid() {
@@ -288,10 +285,11 @@
     qaSelectedVariants = [];
     qaSelectedPositions = [];
 
+    const openVariant = getBestVariant(qaModel);
     document.getElementById('qa-title').textContent = qaModel.name;
     document.getElementById('qa-sub').textContent = `${qaModel.baseItem} · ${qaModel.anvilCode}`;
-    document.getElementById('qa-thumb').src = `images/${qaModel.id}/${qaModel.variants[0].code}.png`;
-    document.getElementById('qa-preview').src = `images/${qaModel.id}/${qaModel.variants[0].code}.png`;
+    document.getElementById('qa-thumb').src = getImgSrc(qaModel, openVariant.code);
+    document.getElementById('qa-preview').src = getImgSrc(qaModel, openVariant.code);
     document.getElementById('qa-view-btn').onclick = () => location.href = `model.html?id=${qaModel.id}`;
 
     renderQASwatches();

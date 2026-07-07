@@ -7678,6 +7678,7 @@ const MODELS = [
     description: "A 3 x 1 set of sofa pillows, compatible with ssc099",
     baseItem: "Granite",
     anvilCode: "ssc100",
+    defaultVariant: "b",
     variants: [
       { code: "a", name: "Silver", color: "#C6BBAE", colorTags: ["grey"] },
       { code: "b", name: "Tan", color: "#B9AB92", colorTags: ["beige"] },
@@ -11661,7 +11662,7 @@ const FILTER_OPTIONS = {
     { value: "garage", label: "Garage" },
     { value: "misc", label: "Misc" }
   ],
-  colorTag: [
+  color: [
     { value: "neutral", label: "Neutral" },
     { value: "brown", label: "Brown" },
     { value: "black", label: "Black" },

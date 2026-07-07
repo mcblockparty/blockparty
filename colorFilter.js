@@ -40,6 +40,39 @@ function getVariantImage(model, variant) {
   return model.images[variant.code];
 }
 
+/**
+ * Resolves which variant should be shown as a model's "cover" image.
+ * Priority: 1) a variant matching the given color context (if any),
+ * 2) the model's manually-set defaultVariant (if any and valid),
+ * 3) the first variant.
+ *
+ * @param {object} model
+ * @param {string[]} [colorContext] - color values currently active (filters and/or search)
+ */
+function getDefaultVariant(model, colorContext = []) {
+  for (const c of colorContext) {
+    const match = model.variants.find(v => (v.colorTags || []).includes(c));
+    if (match) return match;
+  }
+  if (model.defaultVariant) {
+    const dv = model.variants.find(v => v.code === model.defaultVariant);
+    if (dv) return dv;
+  }
+  return model.variants[0];
+}
+
+/**
+ * Resolves a free-text search string to a valid FILTER_OPTIONS.color
+ * value, if it matches one exactly (case-insensitive, value or label).
+ * Returns null if the query isn't a recognized color.
+ */
+function resolveColorFromQuery(query) {
+  if (!query) return null;
+  const q = query.toLowerCase().trim();
+  const opt = FILTER_OPTIONS.color.find(o => o.value === q || o.label.toLowerCase() === q);
+  return opt ? opt.value : null;
+}
+
 // If you're on plain <script> tags (no bundler/modules), these are
 // already globally available. If you're using ES modules, uncomment:
-// export { getVariantsByColor, getVariantImage };
+// export { getVariantsByColor, getVariantImage, getDefaultVariant, resolveColorFromQuery };

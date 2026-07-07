@@ -111,6 +111,7 @@
 </footer>
 
 <script src="data.js"></script>
+<script src="colorFilter.js"></script>
 <script src="cart.js"></script>
 <script>
   // Stats
@@ -123,8 +124,10 @@
   // Featured grid
   const grid = document.getElementById('featured-grid');
   MODELS.forEach(model => {
-    const firstVariant = model.variants[0];
-    const imgSrc = `images/${model.id}/${firstVariant.code}.png`;
+    const coverVariant = getDefaultVariant(model);
+    const imgSrc = model.images?.[coverVariant.code]
+      ? `images/${model.id}/${model.images[coverVariant.code]}`
+      : `images/${model.id}/${coverVariant.code}.png`;
     const dots = model.variants.slice(0, 8).map(v =>
       `<div class="color-dot" style="background:${v.color}" title="${v.name}"></div>`
     ).join('');
